@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contrato de Prestação de Serviços — BotNursery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @media print {
+            .no-print { display: none; }
+        }
+        .section-number {
+            color: #3b82f6;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen py-8 px-4">
+    <div class="max-w-3xl mx-auto">
+        <!-- Configuration Section (edit these variables) -->
+        <script>
+            // ===== CONFIGURAÇÃO - Edite estas variáveis =====
+            const CONFIG = {
+                professionalName: "Dr. [Nome do Profissional]",
+                specialty: "Medicina / Psicologia / Advocacia",
+                companyName: "Clínica/Consultório [Nome]",
+                botName: "Assistente IA [Nome]",
+                // Contact
+                supportEmail: "hello@botnursery.ai",
+                supportWebsite: "www.botnursery.ai"
+            };
+        </script>
+
+        <!-- Language Toggle -->
+        <div class="flex justify-end mb-4 no-print">
+            <div class="bg-white rounded-lg shadow-sm p-1 flex">
+                <button 
+                    id="langPT" 
+                    onclick="setLanguage('pt')"
+                    class="px-4 py-2 rounded text-sm font-medium transition-colors bg-blue-600 text-white"
+                >
+                    🇧🇷 Português
+                </button>
+                <button 
+                    id="langEN" 
+                    onclick="setLanguage('en')"
+                    class="px-4 py-2 rounded text-sm font-medium transition-colors text-gray-600 hover:text-gray-900"
+                >
+                    🇺🇸 English
+                </button>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg shadow-lg p-8 mb-6 text-white">
+            <div class="text-4xl mb-3">🤱</div>
+            <h1 class="text-3xl md:text-4xl font-bold mb-2" data-lang-pt="Contrato de Prestação de Serviços" data-lang-en="Professional Services Agreement">
+                Contrato de Prestação de Serviços
+            </h1>
+            <h2 class="text-xl md:text-2xl font-semibold mb-3" data-lang-pt="BotNursery" data-lang-en="BotNursery">
+                BotNursery
+            </h2>
+            <p class="text-blue-100 text-sm italic" data-lang-pt="BotFather creates bots. BotMother raises them." data-lang-en="BotFather creates bots. BotMother raises them.">
+                BotFather creates bots. BotMother raises them.
+            </p>
+            <p class="text-blue-100 mt-4" data-lang-pt="Termos e Condições para Profissionais" data-lang-en="Terms & Conditions for Professionals">
+                Termos e Condições para Profissionais
+            </p>
+        </div>
+
+        <!-- Document Container -->
+        <div id="agreementContainer" class="bg-white rounded-lg shadow-md p-8 mb-6">
+            
+            <!-- Parties Section -->
+            <div class="mb-8 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-600">
+                <h3 class="text-lg font-bold text-gray-800 mb-3" data-lang-pt="Partes do Contrato" data-lang-en="Contracting Parties">
+                    Partes do Contrato
+                </h3>
+                <div class="text-sm text-gray-700 space-y-2">
+                    <p>
+                        <strong data-lang-pt="Prestadora:" data-lang-en="Provider:">Prestadora:</strong> 
+                        <span data-lang-pt="BotNursery (Consaience LLC), doravante 'BotNursery' ou 'a Plataforma'" data-lang-en="BotNursery (Consaience LLC), hereinafter 'BotNursery' or 'the Platform'">
+                            BotNursery (Consaience LLC), doravante "BotNursery" ou "a Plataforma"
+                        </span>
+                    </p>
+                    <p>
+                        <strong data-lang-pt="Contratante:" data-lang-en="Client:">Contratante:</strong> 
+                        <span data-lang-pt="O profissional que assina este documento, doravante 'Profissional' ou 'Você'" data-lang-en="The professional signing this document, hereinafter 'Professional' or 'You'">
+                            O profissional que assina este documento, doravante "Profissional" ou "Você"
+                        </span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Agreement Content -->
+            <div class="prose prose-sm max-w-none space-y-6 text-gray-700">
+                
+                <!-- Section 1 -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-800 mb-3">
+                        <span class="section-number">1.</span> 
+                        <span data-lang-pt="Objeto / Object" data-lang-en="Object / Purpose">Objeto / Object</span>
+                    </h3>
+                    <div class="pl-6 space-y-2 text-sm" data-lang-pt>
+                        <p>BotNursery fornece uma plataforma de assistente digital alimentada por inteligência artificial, com as seguintes características:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>O assistente é treinado <strong>por você e para você</strong>, refletindo seu conhecimento, estilo e abordagem profissional</li>
+                            <li>Opera via Telegram (e futuros canais de comunicação)</li>
+                            <li>O bot representa <strong>suas orientações e conhecimento</strong>, NÃO constitui aconselhamento médico, jurídico ou financeiro independente</li>
+                            <li>É uma ferramenta de apoio — a decisão profissional final sempre permanece com você</li>
+                        </ul>
+                    </div>
+                    <div class="pl-6 space-y-2 text-sm hidden" data-lang-en>
+                        <p>BotNursery provides an AI-powered digital assistant platform with the following features:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>The assistant is trained <strong>by and for you</strong>, reflecting your knowledge, style, and professional approach</li>
+                            <li>Operates via Telegram (and future communication channels)</li>
+                            <li>The bot represents <strong>your guidance and knowledge</strong>, NOT independent medical, legal, or financial advice</li>
+                            <li>It is a support tool — final professional decisions always remain with you</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 2 -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-800 mb-3">
+                        <span class="section-number">2.</span> 
+                        <span data-lang-pt="Serviços Incluídos / Services Included" data-lang-en="Services Included">Serviços Incluídos / Services Included</span>
+                    </h3>
+                    <div class="pl-6 text-sm" data-lang-pt>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Criação e configuração de assistente de IA personalizado</li>
+                            <li>Treinamento de personalidade e base de conhecimento do bot</li>
+                            <li>Implantação do bot no Telegram</li>
+                            <li>Manutenção contínua da plataforma e atualizações</li>
+                            <li>Suporte técnico via BotMother e equipe Claw</li>
+                            <li>Sistema de dicas (tips) para descoberta de funcionalidades</li>
+                            <li>Infraestrutura de formulário de consentimento para pacientes/clientes</li>
+                        </ul>
+                    </div>
+                    <div class="pl-6 text-sm hidden" data-lang-en>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Custom AI assistant creation and configuration</li>
+                            <li>Bot personality and knowledge base training</li>
+                            <li>Telegram bot deployment</li>
+                            <li>Ongoing platform maintenance and updates</li>
+                            <li>Technical support via BotMother and Claw team</li>
+                            <li>Tip system for feature discovery</li>
+                            <li>Patient/client consent form infrastructure</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 3 -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-800 mb-3">
+                        <span class="section-number">3.</span> 
+                        <span data-lang-pt="Responsabilidades do Profissional" data-lang-en="Professional's Responsibilities">Responsabilidades do Profissional</span>
+                    </h3>
+                    <div class="pl-6 text-sm" data-lang-pt>
+                        <p class="mb-2">Como profissional usuário da BotNursery, você concorda em:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Fornecer materiais de treinamento precisos e orientações claras</li>
+                            <li>Revisar e aprovar respostas do bot durante a fase de treinamento</li>
+                            <li>Manter padrões profissionais em todas as interações do bot</li>
+                            <li>Garantir consentimento informado do paciente/cliente antes de usar o bot</li>
+                            <li><strong>Não substituir</strong> seu julgamento profissional pelo bot</li>
+                            <li>Manter credenciais de acesso seguras</li>
+                            <li>Reportar imediatamente quaisquer erros ou respostas inadequadas do bot</li>
+                            <li>Cumprir regulamentações aplicáveis (HIPAA, LGPD, etc.)</li>
+                        </ul>
+                    </div>
+                    <div class="pl-6 text-sm hidden" data-lang-en>
+                        <p class="mb-2">As a BotNursery professional user, you agree to:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Provide accurate training materials and clear guidance</li>
+                            <li>Review and approve bot responses during the training phase</li>
+                            <li>Maintain professional standards in all bot interactions</li>
+                            <li>Ensure patient/client informed consent before bot use</li>
+                            <li><strong>Not replace</strong> your professional judgment with the bot</li>
+                            <li>Keep login credentials secure</li>
+                            <li>Immediately report any bot errors or inappropriate responses</li>
+                            <li>Comply with applicable regulations (HIPAA, LGPD, etc.)</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 4 -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-800 mb-3">
+                        <span class="section-number">4.</span> 
+                        <span data-lang-pt="Responsabilidades da BotNursery" data-lang-en="BotNursery's Responsibilities">Responsabilidades da BotNursery</span>
+                    </h3>
+                    <div class="pl-6 text-sm" data-lang-pt>
+                        <p class="mb-2">A BotNursery compromete-se a:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Manter o tempo de atividade (uptime) e segurança da plataforma</li>
+                            <li>Proteger dados com criptografia e controles de acesso</li>
+                            <li><strong>NÃO acessar</strong> dados de pacientes/clientes exceto para suporte técnico com seu consentimento</li>
+                            <li>Fornecer atualizações e melhorias contínuas</li>
+                            <li>Notificar você sobre quaisquer incidentes de dados dentro de 48 horas</li>
+                        </ul>
+                    </div>
+                    <div class="pl-6 text-sm hidden" data-lang-en>
+                        <p class="mb-2">BotNursery commits to:</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Maintain platform uptime and security</li>
+                            <li>Protect data with encryption and access controls</li>
+                            <li><strong>NOT access</strong> patient/client data except for technical support with your consent</li>
+                            <li>Provide ongoing updates and improvements</li>
+                            <li>Notify you of any data incidents within 48 hours</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 5 -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-800 mb-3">
+                        <span class="section-number">5.</span> 
+                        <span data-lang-pt="Dados e Privacidade / Data & Privacy" data-lang-en="Data & Privacy">Dados e Privacidade / Data & Privacy</span>
+                    </h3>
+                    <div class="pl-6 text-sm" data-lang-pt>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Todos os dados de pacientes/clientes <strong>pertencem a você</strong></li>
+                            <li>BotNursery processa dados como <strong>operador de dados</strong> (não controlador)</li>
+                            <li>Dados armazenados em servidores criptografados (baseados na UE)</li>
+                            <li>Sem compartilhamento de dados com terceiros</li>
+                            <li>Você pode solicitar exportação ou exclusão de dados a qualquer momento</li>
+                            <li>Arquitetura em conformidade com LGPD e HIPAA</li>
+                            <li>Provedores de modelo de IA (Anthropic) podem processar dados de conversação conforme suas políticas — <strong>sem treinamento com dados de usuários</strong></li>
+                        </ul>
+                    </div>
+                    <div class="pl-6 text-sm hidden" data-lang-en>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>All patient/client data <strong>belongs to you</strong></li>
+                            <li>BotNursery processes data as a <strong>data processor</strong> (not controller)</li>
+                            <li>Data stored on encrypted servers (EU-based)</li>
+                            <li>No data sharing with third parties</li>
+                            <li>You can request data export or deletion at any time</li>
+                            <li>LGPD and HIPAA compliant architecture</li>
+                            <li>AI model providers (Anthropic) may process conversation data per their policies — <strong>no training on user data</strong></li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 6 -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-800 mb-3">
+                        <span class="section-number">6.</span> 
+                        <span data-lang-pt="Propriedade Intelectual" data-lang-en="Intellectual Property">Propriedade Intelectual</span>
+                    </h3>
+                    <div class="pl-6 text-sm" data-lang-pt>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Seus materiais de treinamento permanecem sua propriedade</li>
+                            <li>A personalidade do bot e SOUL.md são co-criados e pertencem a você</li>
+                            <li>BotNursery retém direitos sobre a plataforma, templates e infraestrutura técnica</li>
+                            <li>Padrões de uso agregados e anonimizados podem ser usados para melhorar a plataforma</li>
+                        </ul>
+                    </div>
+                    <div class="pl-6 text-sm hidden" data-lang-en>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Your training materials remain your property</li>
+                            <li>Bot personality and SOUL.md are co-created and belong to you</li>
+                            <li>BotNursery retains rights to the platform, templates, and technical infrastructure</li>
+                            <li>Aggregated, anonymized usage patterns may be used to improve the platform</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 7 -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-800 mb-3">
+                        <span class="section-number">7.</span> 
+                        <span data-lang-pt="Preços e Pagamento / Pricing & Payment" data-lang-en="Pricing & Payment">Preços e Pagamento / Pricing & Payment</span>
+                    </h3>
+                    <div class="pl-6 text-sm" data-lang-pt>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li><strong>Atual:</strong> Beta privado — gratuito para profissionais fundadores</li>
+                            <li>Preços futuros serão comunicados com 30 dias de antecedência</li>
+                            <li>Você pode cancelar antes que novos preços entrem em vigor</li>
+                            <li>Sem reembolsos para meses parciais</li>
+                        </ul>
+                    </div>
+                    <div class="pl-6 text-sm hidden" data-lang-en>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li><strong>Current:</strong> Private beta — free for founding practitioners</li>
+                            <li>Future pricing will be communicated 30 days in advance</li>
+                            <li>You may cancel before new pricing takes effect</li>
+                            <li>No refunds for partial months</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 8 -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-800 mb-3">
+                        <span class="section-number">8.</span> 
+                        <span data-lang-pt="Prazo e Rescisão" data-lang-en="Term & Termination">Prazo e Rescisão</span>
+                    </h3>
+                    <div class="pl-6 text-sm" data-lang-pt>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Contrato mês a mês após o período beta</li>
+                            <li>Qualquer parte pode rescindir com 30 dias de aviso prévio</li>
+                            <li>Na rescisão: você recebe exportação completa de dados, bot é desativado</li>
+                            <li>Dados mantidos por 90 dias após rescisão, depois excluídos</li>
+                        </ul>
+                    </div>
+                    <div class="pl-6 text-sm hidden" data-lang-en>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Month-to-month agreement after beta period</li>
+                            <li>Either party may terminate with 30 days notice</li>
+                            <li>Upon termination: you receive full data export, bot is deactivated</li>
+                            <li>Data retained for 90 days after termination, then deleted</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 9 -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-800 mb-3">
+                        <span class="section-number">9.</span> 
+                        <span data-lang-pt="Limitação de Responsabilidade" data-lang-en="Limitation of Liability">Limitação de Responsabilidade</span>
+                    </h3>
+                    <div class="pl-6 text-sm" data-lang-pt>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>BotNursery é uma ferramenta, <strong>não um consultor profissional</strong></li>
+                            <li>Você é responsável por todas as decisões clínicas/profissionais</li>
+                            <li>BotNursery não se responsabiliza por: respostas do bot usadas sem sua revisão, resultados de pacientes, conformidade regulatória de sua prática</li>
+                            <li>Responsabilidade máxima limitada às taxas pagas nos 12 meses anteriores</li>
+                        </ul>
+                    </div>
+                    <div class="pl-6 text-sm hidden" data-lang-en>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>BotNursery is a tool, <strong>not a professional advisor</strong></li>
+                            <li>You are responsible for all clinical/professional decisions</li>
+                            <li>BotNursery not liable for: bot responses used without your review, patient outcomes, regulatory compliance of your practice</li>
+                            <li>Maximum liability limited to fees paid in prior 12 months</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 10 -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-800 mb-3">
+                        <span class="section-number">10.</span> 
+                        <span data-lang-pt="Confidencialidade" data-lang-en="Confidentiality">Confidencialidade</span>
+                    </h3>
+                    <div class="pl-6 text-sm" data-lang-pt>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Ambas as partes concordam em manter informações confidenciais privadas</li>
+                            <li>Dados de pacientes/clientes são o mais alto nível de confidencialidade</li>
+                            <li>Equipe BotNursery (Daniel, Claw, BotMother) pode acessar configuração do bot apenas para fins de suporte</li>
+                        </ul>
+                    </div>
+                    <div class="pl-6 text-sm hidden" data-lang-en>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Both parties agree to keep confidential information private</li>
+                            <li>Patient/client data is the highest level of confidentiality</li>
+                            <li>BotNursery team (Daniel, Claw, BotMother) may access bot configuration for support purposes only</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 11 -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-800 mb-3">
+                        <span class="section-number">11.</span> 
+                        <span data-lang-pt="Modificações" data-lang-en="Modifications">Modificações</span>
+                    </h3>
+                    <div class="pl-6 text-sm" data-lang-pt>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>BotNursery pode atualizar estes termos com 30 dias de aviso prévio</li>
+                            <li>Uso continuado após o aviso constitui aceitação</li>
+                            <li>Mudanças materiais requerem nova assinatura</li>
+                        </ul>
+                    </div>
+                    <div class="pl-6 text-sm hidden" data-lang-en>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>BotNursery may update these terms with 30 days notice</li>
+                            <li>Continued use after notice constitutes acceptance</li>
+                            <li>Material changes require re-signing</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 12 -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-800 mb-3">
+                        <span class="section-number">12.</span> 
+                        <span data-lang-pt="Lei Aplicável" data-lang-en="Governing Law">Lei Aplicável</span>
+                    </h3>
+                    <div class="pl-6 text-sm" data-lang-pt>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Lei brasileira (LGPD) para profissionais brasileiros</li>
+                            <li>Lei dos EUA (Califórnia) para profissionais baseados nos EUA</li>
+                            <li>Disputas resolvidas por arbitragem em sua jurisdição</li>
+                        </ul>
+                    </div>
+                    <div class="pl-6 text-sm hidden" data-lang-en>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Brazilian law (LGPD) for Brazilian professionals</li>
+                            <li>US law (California) for US-based professionals</li>
+                            <li>Disputes resolved by arbitration in your jurisdiction</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 13 -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-800 mb-3">
+                        <span class="section-number">13.</span> 
+                        <span data-lang-pt="Contato" data-lang-en="Contact">Contato</span>
+                    </h3>
+                    <div class="pl-6 text-sm" data-lang-pt>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li><strong>Email:</strong> <a href="mailto:hello@botnursery.ai" class="text-blue-600 hover:underline">hello@botnursery.ai</a></li>
+                            <li><strong>Plataforma:</strong> <a href="https://www.botnursery.ai" target="_blank" class="text-blue-600 hover:underline">www.botnursery.ai</a></li>
+                            <li><strong>Suporte:</strong> via BotMother no Telegram</li>
+                        </ul>
+                    </div>
+                    <div class="pl-6 text-sm hidden" data-lang-en>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li><strong>Email:</strong> <a href="mailto:hello@botnursery.ai" class="text-blue-600 hover:underline">hello@botnursery.ai</a></li>
+                            <li><strong>Platform:</strong> <a href="https://www.botnursery.ai" target="_blank" class="text-blue-600 hover:underline">www.botnursery.ai</a></li>
+                            <li><strong>Support:</strong> via BotMother on Telegram</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Legal Disclaimer -->
+                <div class="mt-8 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded">
+                    <p class="text-sm text-yellow-800" data-lang-pt>
+                        <strong>⚠️ Aviso Importante:</strong> Este documento não substitui assessoria jurídica. Recomendamos consultar seu advogado antes de assinar.
+                    </p>
+                    <p class="text-sm text-yellow-800 hidden" data-lang-en>
+                        <strong>⚠️ Important Notice:</strong> This document does not replace legal advice. We recommend consulting your attorney before signing.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Signature Form -->
+            <form id="signatureForm" class="mt-8 space-y-4">
+                <hr class="my-8">
+                
+                <h3 class="text-xl font-bold text-gray-800 mb-4" data-lang-pt="Assinatura Digital" data-lang-en="Digital Signature">
+                    Assinatura Digital
+                </h3>
+
+                <div>
+                    <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">
+                        <span data-lang-pt="Nome Completo" data-lang-en="Full Name">Nome Completo</span>
+                        <span class="text-red-500">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="fullName" 
+                        required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="Dr. Maria Silva"
+                    >
+                </div>
+
+                <div>
+                    <label for="registrationNumber" class="block text-sm font-medium text-gray-700 mb-1">
+                        <span data-lang-pt="Número de Registro Profissional (CRM, CRP, OAB, etc.)" data-lang-en="Professional Registration Number (CRM, CRP, OAB, etc.)">
+                            Número de Registro Profissional (CRM, CRP, OAB, etc.)
+                        </span>
+                        <span class="text-red-500">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="registrationNumber" 
+                        required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="CRM 12345-SP"
+                    >
+                </div>
+
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
+                        <span data-lang-pt="E-mail Profissional" data-lang-en="Professional Email">E-mail Profissional</span>
+                        <span class="text-red-500">*</span>
+                    </label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="[email protected]"
+                    >
+                </div>
+
+                <div>
+                    <label for="signatureDate" class="block text-sm font-medium text-gray-700 mb-1">
+                        <span data-lang-pt="Data" data-lang-en="Date">Data</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="signatureDate" 
+                        readonly
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-50"
+                    >
+                </div>
+
+                <!-- Agreement Checkbox -->
+                <div class="flex items-start space-x-3 p-4 bg-blue-50 rounded-md border-2 border-blue-200">
+                    <input 
+                        type="checkbox" 
+                        id="agreementCheck" 
+                        required
+                        class="mt-1 h-5 w-5 text-blue-600 focus:ring-2 focus:ring-blue-500 border-gray-300 rounded"
+                    >
+                    <label for="agreementCheck" class="text-sm text-gray-700 cursor-pointer">
+                        <strong data-lang-pt="Li e concordo com todos os termos acima." data-lang-en="I have read and agree to all terms above.">
+                            Li e concordo com todos os termos acima.
+                        </strong>
+                        <br>
+                        <span class="text-xs text-gray-600" data-lang-pt>
+                            Ao assinar, você confirma que entende e concorda com todas as cláusulas deste Contrato de Prestação de Serviços.
+                        </span>
+                        <span class="text-xs text-gray-600 hidden" data-lang-en>
+                            By signing, you confirm that you understand and agree to all clauses of this Professional Services Agreement.
+                        </span>
+                    </label>
+                </div>
+
+                <!-- Submit Button -->
+                <button 
+                    type="submit"
+                    class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-6 rounded-lg transition duration-200 shadow-lg hover:shadow-xl text-lg"
+                >
+                    <span data-lang-pt="✍️ Assinar Contrato" data-lang-en="✍️ Sign Agreement">✍️ Assinar Contrato</span>
+                </button>
+            </form>
+        </div>
+
+        <!-- Confirmation Message (hidden initially) -->
+        <div id="confirmationMessage" class="hidden bg-gradient-to-r from-green-50 to-emerald-50 border-l-4 border-green-500 rounded-lg shadow-xl p-8">
+            <div class="flex items-start">
+                <div class="flex-shrink-0">
+                    <svg class="w-12 h-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <div class="ml-4 flex-1">
+                    <h3 class="text-2xl font-bold text-green-800 mb-4">
+                        <span data-lang-pt="✓ Contrato Assinado com Sucesso!" data-lang-en="✓ Agreement Signed Successfully!">
+                            ✓ Contrato Assinado com Sucesso!
+                        </span>
+                    </h3>
+                    <div class="bg-white rounded-lg p-4 mb-4 shadow-sm">
+                        <div class="text-gray-700 space-y-2 text-sm">
+                            <p><strong data-lang-pt="Nome:" data-lang-en="Name:">Nome:</strong> <span id="confirmedName"></span></p>
+                            <p><strong data-lang-pt="Registro:" data-lang-en="Registration:">Registro:</strong> <span id="confirmedRegistration"></span></p>
+                            <p><strong data-lang-pt="E-mail:" data-lang-en="Email:">E-mail:</strong> <span id="confirmedEmail"></span></p>
+                            <p><strong data-lang-pt="Data e Hora:" data-lang-en="Date & Time:">Data e Hora:</strong> <span id="confirmedTimestamp"></span></p>
+                            <p><strong data-lang-pt="Identificador:" data-lang-en="ID:">Identificador:</strong> <span id="confirmedId" class="font-mono text-xs bg-gray-100 px-2 py-1 rounded"></span></p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4" data-lang-pt>
+                        Bem-vindo(a) à BotNursery! Sua assinatura foi registrada com sucesso. Em breve nossa equipe entrará em contato para iniciar a configuração do seu assistente de IA.
+                    </p>
+                    <p class="text-sm text-gray-600 mb-4 hidden" data-lang-en>
+                        Welcome to BotNursery! Your signature has been successfully recorded. Our team will contact you shortly to begin setting up your AI assistant.
+                    </p>
+                    <div class="flex gap-3 no-print">
+                        <button 
+                            onclick="window.print()" 
+                            class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition duration-200"
+                        >
+                            <span data-lang-pt="🖨️ Imprimir" data-lang-en="🖨️ Print">🖨️ Imprimir</span>
+                        </button>
+                        <button 
+                            onclick="downloadPDF()" 
+                            class="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-md transition duration-200"
+                        >
+                            <span data-lang-pt="📥 Download PDF" data-lang-en="📥 Download PDF">📥 Download PDF</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center text-xs text-gray-500 mt-6 no-print">
+            <p>🤱 BotNursery — <span data-lang-pt="BotFather creates bots. BotMother raises them." data-lang-en="BotFather creates bots. BotMother raises them.">BotFather creates bots. BotMother raises them.</span></p>
+            <p class="mt-2" data-lang-pt>
+                Em conformidade com LGPD (Lei 13.709/2018), HIPAA, e regulamentações profissionais aplicáveis
+            </p>
+            <p class="mt-2 hidden" data-lang-en>
+                In compliance with LGPD (Law 13.709/2018), HIPAA, and applicable professional regulations
+            </p>
+        </div>
+    </div>
+
+    <script>
+        let currentLang = 'pt';
+
+        // Initialize with current date
+        document.addEventListener('DOMContentLoaded', function() {
+            updateSignatureDate();
+            setLanguage('pt');
+        });
+
+        function updateSignatureDate() {
+            const now = new Date();
+            const formatted = now.toLocaleString('pt-BR', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                timeZone: 'America/Sao_Paulo'
+            });
+            document.getElementById('signatureDate').value = formatted;
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            
+            // Update button styles
+            document.getElementById('langPT').className = lang === 'pt' 
+                ? 'px-4 py-2 rounded text-sm font-medium transition-colors bg-blue-600 text-white'
+                : 'px-4 py-2 rounded text-sm font-medium transition-colors text-gray-600 hover:text-gray-900';
+            document.getElementById('langEN').className = lang === 'en' 
+                ? 'px-4 py-2 rounded text-sm font-medium transition-colors bg-blue-600 text-white'
+                : 'px-4 py-2 rounded text-sm font-medium transition-colors text-gray-600 hover:text-gray-900';
+
+            // Show/hide elements based on language
+            document.querySelectorAll('[data-lang-pt]').forEach(el => {
+                if (el.hasAttribute('data-lang-en')) {
+                    // Element has both languages - just show/hide text
+                    const ptText = el.getAttribute('data-lang-pt');
+                    const enText = el.getAttribute('data-lang-en');
+                    el.textContent = lang === 'pt' ? ptText : enText;
+                } else {
+                    // Element is PT-only section
+                    if (lang === 'pt') {
+                        el.classList.remove('hidden');
+                    } else {
+                        el.classList.add('hidden');
+                    }
+                }
+            });
+
+            document.querySelectorAll('[data-lang-en]').forEach(el => {
+                if (!el.hasAttribute('data-lang-pt')) {
+                    // Element is EN-only section
+                    if (lang === 'en') {
+                        el.classList.remove('hidden');
+                    } else {
+                        el.classList.add('hidden');
+                    }
+                }
+            });
+
+            // Update date format
+            updateSignatureDate();
+        }
+
+        // Form submission
+        document.getElementById('signatureForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.innerHTML;
+            submitButton.disabled = true;
+            submitButton.innerHTML = currentLang === 'pt' ? '⏳ Processando...' : '⏳ Processing...';
+            
+            // Collect form data
+            const fullName = document.getElementById('fullName').value.trim();
+            const registrationNumber = document.getElementById('registrationNumber').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const timestamp = new Date().toISOString();
+            
+            const signatureData = {
+                id: generateId(),
+                config: CONFIG,
+                fullName: fullName,
+                registrationNumber: registrationNumber,
+                email: email,
+                agreed: true,
+                timestamp: timestamp,
+                timestampFormatted: formatDateTime(new Date(), currentLang),
+                language: currentLang
+            };
+
+            // Save to localStorage
+            saveSignature(signatureData);
+
+            // Show confirmation
+            setTimeout(() => {
+                showConfirmation(signatureData);
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalText;
+            }, 1000);
+        });
+
+        function generateId() {
+            return 'agreement_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        }
+
+        function formatDateTime(date, lang) {
+            if (lang === 'pt') {
+                return date.toLocaleString('pt-BR', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    timeZone: 'America/Sao_Paulo'
+                });
+            } else {
+                return date.toLocaleString('en-US', {
+                    month: '2-digit',
+                    day: '2-digit',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    timeZone: 'America/Los_Angeles'
+                });
+            }
+        }
+
+        function saveSignature(data) {
+            // Get existing signatures from localStorage
+            let signatures = [];
+            try {
+                const stored = localStorage.getItem('botnurserySignatures');
+                if (stored) {
+                    signatures = JSON.parse(stored);
+                }
+            } catch (e) {
+                console.error('Error loading existing signatures:', e);
+            }
+
+            // Add new signature
+            signatures.push(data);
+
+            // Save back to localStorage
+            try {
+                localStorage.setItem('botnurserySignatures', JSON.stringify(signatures));
+                console.log('Signature saved to localStorage:', data);
+            } catch (e) {
+                console.error('Error saving signature:', e);
+            }
+        }
+
+        function showConfirmation(data) {
+            // Hide form
+            document.getElementById('agreementContainer').classList.add('hidden');
+            
+            // Populate confirmation
+            document.getElementById('confirmedName').textContent = data.fullName;
+            document.getElementById('confirmedRegistration').textContent = data.registrationNumber;
+            document.getElementById('confirmedEmail').textContent = data.email;
+            document.getElementById('confirmedTimestamp').textContent = data.timestampFormatted;
+            document.getElementById('confirmedId').textContent = data.id;
+            
+            // Show confirmation
+            document.getElementById('confirmationMessage').classList.remove('hidden');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function downloadPDF() {
+            alert(currentLang === 'pt' 
+                ? 'Função de download em desenvolvimento. Por favor, use "Imprimir" e salve como PDF.'
+                : 'Download function in development. Please use "Print" and save as PDF.');
+        }
+
+        // Export function for admin use
+        function exportSignatures() {
+            try {
+                const stored = localStorage.getItem('botnurserySignatures');
+                if (stored) {
+                    const signatures = JSON.parse(stored);
+                    const dataStr = JSON.stringify(signatures, null, 2);
+                    const dataBlob = new Blob([dataStr], { type: 'application/json' });
+                    const url = URL.createObjectURL(dataBlob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = `botnursery_signatures_${Date.now()}.json`;
+                    link.click();
+                }
+            } catch (e) {
+                console.error('Error exporting signatures:', e);
+            }
+        }
+
+        // Make export function available globally (for debugging/admin use)
+        window.exportSignatures = exportSignatures;
+        
+        console.log('BotNursery Professional Agreement loaded. Config:', CONFIG);
+        console.log('To export all signatures, run: exportSignatures()');
+    </script>
+</body>
+</html>
