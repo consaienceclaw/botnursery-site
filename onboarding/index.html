@@ -83,6 +83,74 @@
             font-weight: bold;
             box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
         }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            max-width: 500px;
+            margin: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .info-icon {
+            display: inline-block;
+            cursor: pointer;
+            color: #667eea;
+            font-weight: bold;
+            margin-left: 4px;
+        }
+        
+        .info-icon:hover {
+            color: #764ba2;
+        }
+        
+        .parsed-field {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            background: #f0fdf4;
+            border: 1px solid #86efac;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+        
+        .parsed-field .checkmark {
+            color: #16a34a;
+            margin-right: 8px;
+            font-weight: bold;
+        }
+        
+        .parsed-field .value {
+            font-family: monospace;
+            color: #15803d;
+            font-size: 14px;
+        }
+        
+        .callout-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px solid #fbbf24;
+            border-radius: 12px;
+            padding: 16px;
+            margin: 16px 0;
+        }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
@@ -112,6 +180,36 @@
         </div>
     </div>
 
+    <!-- Pricing Info Modal -->
+    <div id="pricingModal" class="modal">
+        <div class="modal-content">
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+                <span class="lang-pt">ℹ️ Como funciona a cobrança</span>
+                <span class="lang-en hidden">ℹ️ How billing works</span>
+            </h3>
+            <p class="text-gray-700 mb-4">
+                <span class="lang-pt">O custo por paciente/cliente se aplica apenas a pacientes/clientes que interagem diretamente com o bot via chat. Pacientes que você atende mas não usam o bot não são cobrados.</span>
+                <span class="lang-en hidden">The per-patient/client cost applies only to patients/clients who interact directly with the bot via chat. Patients you see but don't use the bot are not charged.</span>
+            </p>
+            <button onclick="closePricingModal()" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 rounded-lg transition-all">
+                <span class="lang-pt">Entendi!</span>
+                <span class="lang-en hidden">Got it!</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Pre-fill Banner -->
+    <div id="prefillBanner" class="hidden fixed top-20 left-0 right-0 z-30">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
+                <span class="text-green-800 font-medium">
+                    <span class="lang-pt">✨ Já preenchemos alguns dados pra você!</span>
+                    <span class="lang-en hidden">✨ We've pre-filled some info for you!</span>
+                </span>
+            </div>
+        </div>
+    </div>
+
     <!-- Main Content -->
     <div class="pt-28 pb-12 px-4">
         <div class="max-w-4xl mx-auto">
@@ -133,6 +231,23 @@
                     </p>
                 </div>
 
+                <!-- Professional can charge patients callout -->
+                <div class="callout-box mb-6 max-w-3xl mx-auto">
+                    <div class="flex items-start">
+                        <div class="text-3xl mr-3">💰</div>
+                        <div>
+                            <h3 class="font-bold text-gray-800 mb-1">
+                                <span class="lang-pt">Você sabia?</span>
+                                <span class="lang-en hidden">Did you know?</span>
+                            </h3>
+                            <p class="text-sm text-gray-700">
+                                <span class="lang-pt">Você pode cobrar seus pacientes/clientes pelo acesso ao bot! Defina qualquer valor que desejar e a plataforma transfere diretamente para você (menos custos de transação).</span>
+                                <span class="lang-en hidden">You can charge your patients/clients for bot access! Set any amount you want and the platform transfers directly to you (minus transaction costs).</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="grid md:grid-cols-2 gap-6 mb-8">
                     <!-- Starter Plan -->
                     <div class="plan-card bg-white rounded-xl p-6 card-shadow relative" data-plan="starter">
@@ -140,19 +255,20 @@
                         <div class="text-3xl font-bold text-purple-600 mb-1">$29<span class="text-lg text-gray-500">/mo</span></div>
                         <div class="text-sm text-gray-500 mb-4">(R$149/mo)</div>
                         <div class="text-gray-600 mb-4">
-                            <span class="lang-pt">+ $5/paciente ativo/mês</span>
-                            <span class="lang-en hidden">+ $5/active patient/mo</span>
+                            <span class="lang-pt">+ $5/paciente ou cliente ativo/mês</span>
+                            <span class="lang-en hidden">+ $5/active patient or client/mo</span>
+                            <span class="info-icon" onclick="openPricingModal()">ℹ️</span>
                             <br>
-                            <span class="text-xs text-gray-500">(R$25/paciente)</span>
+                            <span class="text-xs text-gray-500">(R$25/paciente ou cliente)</span>
                         </div>
                         <div class="border-t pt-4 mb-4">
                             <div class="text-sm text-gray-600 space-y-2">
                                 <div class="flex justify-between">
-                                    <span>5 <span class="lang-pt">pacientes</span><span class="lang-en hidden">patients</span>:</span>
+                                    <span>5 <span class="lang-pt">pacientes/clientes</span><span class="lang-en hidden">patients/clients</span>:</span>
                                     <span class="font-semibold">$54/mo</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span>20 <span class="lang-pt">pacientes</span><span class="lang-en hidden">patients</span>:</span>
+                                    <span>20 <span class="lang-pt">pacientes/clientes</span><span class="lang-en hidden">patients/clients</span>:</span>
                                     <span class="font-semibold">$129/mo</span>
                                 </div>
                             </div>
@@ -193,23 +309,33 @@
                             <span class="lang-en hidden">50% OFF for 6 months!</span>
                         </div>
                         <div class="text-gray-600 mb-4">
-                            <span class="lang-pt">+ $2.50/paciente ativo/mês</span>
-                            <span class="lang-en hidden">+ $2.50/active patient/mo</span>
+                            <span class="lang-pt">+ $2.50/paciente ou cliente ativo/mês</span>
+                            <span class="lang-en hidden">+ $2.50/active patient or client/mo</span>
+                            <span class="info-icon" onclick="openPricingModal()">ℹ️</span>
                             <br>
-                            <span class="text-xs text-gray-500">(R$12.50/paciente)</span>
+                            <span class="text-xs text-gray-500">(R$12.50/paciente ou cliente)</span>
                         </div>
                         <div class="border-t pt-4 mb-4">
                             <div class="text-sm text-gray-600 space-y-2">
                                 <div class="flex justify-between">
-                                    <span>5 <span class="lang-pt">pacientes</span><span class="lang-en hidden">patients</span>:</span>
+                                    <span>5 <span class="lang-pt">pacientes/clientes</span><span class="lang-en hidden">patients/clients</span>:</span>
                                     <span class="font-semibold">$27.50/mo</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span>20 <span class="lang-pt">pacientes</span><span class="lang-en hidden">patients</span>:</span>
+                                    <span>20 <span class="lang-pt">pacientes/clientes</span><span class="lang-en hidden">patients/clients</span>:</span>
                                     <span class="font-semibold">$65/mo</span>
                                 </div>
                             </div>
                         </div>
+                        
+                        <!-- Fundador explanation -->
+                        <div class="bg-orange-50 border border-orange-200 rounded-lg p-3 mb-4 text-xs text-gray-700">
+                            <p>
+                                <span class="lang-pt">🌱 <strong>Fundador</strong> = adotante inicial da nossa plataforma. Como agradecimento por acreditar no BotNursery desde o início, você recebe 50% de desconto nos primeiros 6 meses, acesso direto ao time fundador, e prioridade em novas funcionalidades.</span>
+                                <span class="lang-en hidden">🌱 <strong>Founder</strong> = early adopter of our platform. As thanks for believing in BotNursery from the start, you get 50% off for 6 months, direct access to the founding team, and priority on new features.</span>
+                            </p>
+                        </div>
+                        
                         <div class="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
                             <div class="text-green-800 text-sm font-medium">
                                 ✓ <span class="lang-pt">7 dias grátis</span><span class="lang-en hidden">7-day free trial</span>
@@ -413,6 +539,14 @@
                             <input type="text" id="cardName" class="w-full stripe-input">
                         </div>
 
+                        <!-- Stripe security note -->
+                        <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                            <p class="text-sm text-gray-700">
+                                <span class="lang-pt">🔒 Seus dados de cartão são processados diretamente pelo Stripe. Nem nós nem nossos agentes têm acesso ao número do seu cartão.</span>
+                                <span class="lang-en hidden">🔒 Your card data is processed directly by Stripe. Neither we nor our agents have access to your card number.</span>
+                            </p>
+                        </div>
+
                         <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
                             <div class="flex items-center space-x-2 text-blue-800 text-sm">
                                 <span>🔒</span>
@@ -587,6 +721,19 @@
                     </p>
                 </div>
 
+                <!-- Bot explanation callout -->
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6 max-w-3xl mx-auto">
+                    <div class="flex items-start">
+                        <div class="text-2xl mr-3">ℹ️</div>
+                        <div>
+                            <p class="text-sm text-gray-700">
+                                <span class="lang-pt">O bot que você vai criar no Telegram é apenas a interface — como uma porta de entrada. O verdadeiro cérebro do seu agente vive na BotNursery, onde ele vai crescer, aprender e evoluir com você. Pense no bot como o rosto, e a BotNursery como a mente.</span>
+                                <span class="lang-en hidden">The bot you'll create on Telegram is just the interface — like a front door. Your agent's real brain lives in BotNursery, where it will grow, learn, and evolve with you. Think of the bot as the face, and BotNursery as the mind.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="bg-white rounded-xl p-8 card-shadow max-w-3xl mx-auto">
                     <div class="grid md:grid-cols-2 gap-6 mb-6">
                         <div>
@@ -635,8 +782,8 @@
                                     <div class="flex items-start">
                                         <div class="bg-purple-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 flex-shrink-0">5</div>
                                         <p class="text-sm text-gray-700">
-                                            <span class="lang-pt">O BotFather vai enviar um <strong>token</strong>. Copie ele!</span>
-                                            <span class="lang-en hidden">BotFather will send a <strong>token</strong>. Copy it!</span>
+                                            <span class="lang-pt">O BotFather vai enviar um <strong>token</strong>. Copie a mensagem toda!</span>
+                                            <span class="lang-en hidden">BotFather will send a <strong>token</strong>. Copy the entire message!</span>
                                         </p>
                                     </div>
                                 </div>
@@ -670,36 +817,83 @@
                     </div>
 
                     <div class="border-t pt-6 space-y-4">
+                        <!-- BotFather message paste textarea -->
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">
-                                <span class="lang-pt">Cole o token do seu bot aqui</span>
-                                <span class="lang-en hidden">Paste your bot token here</span>
-                                <span class="text-red-500">*</span>
+                                <span class="lang-pt">Cole aqui a mensagem completa que o BotFather enviou:</span>
+                                <span class="lang-en hidden">Paste the complete message from BotFather here:</span>
                             </label>
-                            <input type="text" id="botToken" class="w-full stripe-input font-mono text-sm" placeholder="123456789:ABCdefGHIjklMNOpqrsTUVwxyz">
-                            <p class="text-xs text-gray-500 mt-1">
-                                <span class="lang-pt">Formato: números:letras</span>
-                                <span class="lang-en hidden">Format: numbers:letters</span>
-                            </p>
+                            <textarea id="botfatherMessage" class="w-full stripe-input font-mono text-sm" rows="8" placeholder="Done! Congratulations on your new bot. You will find it at t.me/DrSilvaAssistenteBot...
+
+Use this token to access the HTTP API:
+123456789:ABCdefGHIjklMNOpqrsTUVwxyz
+
+Keep your token secure..."></textarea>
                         </div>
 
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">
-                                <span class="lang-pt">Username do seu bot</span>
-                                <span class="lang-en hidden">Your bot's username</span>
-                                <span class="text-red-500">*</span>
-                            </label>
-                            <input type="text" id="botUsername" class="w-full stripe-input" placeholder="@DrSilvaAssistenteBot">
+                        <!-- Parsed results -->
+                        <div id="parsedResults" class="hidden space-y-2">
+                            <div id="parsedToken" class="parsed-field hidden">
+                                <span class="checkmark">✅</span>
+                                <span class="lang-pt">Token encontrado: </span>
+                                <span class="lang-en hidden">Token found: </span>
+                                <span class="value" id="parsedTokenValue"></span>
+                            </div>
+                            <div id="parsedUsername" class="parsed-field hidden">
+                                <span class="checkmark">✅</span>
+                                <span>Username: </span>
+                                <span class="value" id="parsedUsernameValue"></span>
+                            </div>
+                            <div id="parsedName" class="parsed-field hidden">
+                                <span class="checkmark">✅</span>
+                                <span class="lang-pt">Nome: </span>
+                                <span class="lang-en hidden">Name: </span>
+                                <span class="value" id="parsedNameValue"></span>
+                            </div>
                         </div>
 
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">
-                                <span class="lang-pt">Nome do seu bot</span>
-                                <span class="lang-en hidden">Your bot's name</span>
-                                <span class="text-red-500">*</span>
-                            </label>
-                            <input type="text" id="botName" class="w-full stripe-input" placeholder="Assistente Dr. Silva">
+                        <!-- Manual fallback fields -->
+                        <div id="manualFields" class="hidden space-y-4">
+                            <div class="text-center mb-3">
+                                <button id="showManualFields" class="text-sm text-purple-600 hover:underline">
+                                    <span class="lang-pt">Não conseguiu? Preencha manualmente</span>
+                                    <span class="lang-en hidden">Didn't work? Fill in manually</span>
+                                </button>
+                            </div>
+                            <div id="manualInputs" class="hidden space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                                        <span class="lang-pt">Cole o token do seu bot aqui</span>
+                                        <span class="lang-en hidden">Paste your bot token here</span>
+                                        <span class="text-red-500">*</span>
+                                    </label>
+                                    <input type="text" id="botTokenManual" class="w-full stripe-input font-mono text-sm" placeholder="123456789:ABCdefGHIjklMNOpqrsTUVwxyz">
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                                        <span class="lang-pt">Username do seu bot</span>
+                                        <span class="lang-en hidden">Your bot's username</span>
+                                        <span class="text-red-500">*</span>
+                                    </label>
+                                    <input type="text" id="botUsernameManual" class="w-full stripe-input" placeholder="@DrSilvaAssistenteBot">
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                                        <span class="lang-pt">Nome do seu bot</span>
+                                        <span class="lang-en hidden">Your bot's name</span>
+                                        <span class="text-red-500">*</span>
+                                    </label>
+                                    <input type="text" id="botNameManual" class="w-full stripe-input" placeholder="Assistente Dr. Silva">
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- Hidden fields to store parsed values -->
+                        <input type="hidden" id="botToken">
+                        <input type="hidden" id="botUsername">
+                        <input type="hidden" id="botName">
                     </div>
                 </div>
 
@@ -741,8 +935,8 @@
                                     <strong class="lang-pt">Seus dados são seus</strong>
                                     <strong class="lang-en hidden">Your data is yours</strong>
                                     <p class="text-gray-600 mt-1">
-                                        <span class="lang-pt">Você mantém total propriedade de todas as suas informações e conversas com pacientes.</span>
-                                        <span class="lang-en hidden">You retain full ownership of all your information and patient conversations.</span>
+                                        <span class="lang-pt">Você mantém total propriedade de todas as suas informações e conversas com pacientes/clientes.</span>
+                                        <span class="lang-en hidden">You retain full ownership of all your information and patient/client conversations.</span>
                                     </p>
                                 </div>
                             </div>
@@ -823,6 +1017,7 @@
                 <!-- Error State -->
                 <div id="errorState" class="hidden bg-red-50 border border-red-200 rounded-lg p-6 mt-8 max-w-3xl mx-auto">
                     <h3 class="text-red-800 font-semibold mb-2">
+
                         <span class="lang-pt">Ops! Algo deu errado.</span>
                         <span class="lang-en hidden">Oops! Something went wrong.</span>
                     </h3>
@@ -944,17 +1139,85 @@
             timestamp: null
         };
 
+        // URL Parameters pre-fill
+        function loadUrlParameters() {
+            const urlParams = new URLSearchParams(window.location.search);
+            let hasParams = false;
+            let filledFields = [];
+
+            // Read parameters
+            if (urlParams.has('name')) {
+                formData.name = urlParams.get('name');
+                hasParams = true;
+                filledFields.push('name');
+            }
+            if (urlParams.has('email')) {
+                formData.email = urlParams.get('email');
+                hasParams = true;
+                filledFields.push('email');
+            }
+            if (urlParams.has('profession')) {
+                const prof = urlParams.get('profession');
+                const professionSelect = document.getElementById('profession');
+                // Try to match to existing options
+                const matchedOption = Array.from(professionSelect.options).find(opt => 
+                    opt.value.toLowerCase() === prof.toLowerCase() || 
+                    opt.textContent.toLowerCase().includes(prof.toLowerCase())
+                );
+                if (matchedOption) {
+                    formData.profession = matchedOption.value;
+                } else {
+                    formData.profession = 'outro';
+                    formData.otherProfession = prof;
+                }
+                hasParams = true;
+                filledFields.push('profession');
+            }
+            if (urlParams.has('phone')) {
+                formData.phone = urlParams.get('phone');
+                hasParams = true;
+                filledFields.push('phone');
+            }
+            if (urlParams.has('telegram')) {
+                formData.telegramId = urlParams.get('telegram');
+                hasParams = true;
+                filledFields.push('telegram');
+            }
+            if (urlParams.has('lang')) {
+                const lang = urlParams.get('lang');
+                if (lang === 'en' || lang === 'pt') {
+                    currentLang = lang;
+                }
+            }
+
+            // Show banner if params present
+            if (hasParams) {
+                document.getElementById('prefillBanner').classList.remove('hidden');
+                setTimeout(() => {
+                    document.getElementById('prefillBanner').classList.add('hidden');
+                }, 5000);
+            }
+
+            // Auto-advance if step 2 is complete
+            if (filledFields.includes('name') && filledFields.includes('email') && filledFields.includes('profession')) {
+                // Will auto-advance on step 2 when it's reached
+                formData.autoAdvanceStep2 = true;
+            }
+        }
+
         // Load saved progress
         const savedData = localStorage.getItem('botnursery_onboarding');
         if (savedData) {
             try {
                 const parsed = JSON.parse(savedData);
                 formData = { ...formData, ...parsed };
-                // Don't restore step - always start at step 1
             } catch (e) {
                 console.error('Failed to parse saved data:', e);
             }
         }
+
+        // Load URL params (override saved data)
+        loadUrlParameters();
 
         // Language toggle
         document.getElementById('langToggle').addEventListener('click', () => {
@@ -971,6 +1234,22 @@
             });
             document.getElementById('langToggle').innerHTML = currentLang === 'pt' ? '🇬🇧 English' : '🇧🇷 Português';
         }
+
+        // Pricing modal functions
+        function openPricingModal() {
+            document.getElementById('pricingModal').classList.add('show');
+        }
+
+        function closePricingModal() {
+            document.getElementById('pricingModal').classList.remove('show');
+        }
+
+        // Close modal on background click
+        document.getElementById('pricingModal').addEventListener('click', (e) => {
+            if (e.target.id === 'pricingModal') {
+                closePricingModal();
+            }
+        });
 
         // Navigation
         function goToStep(step) {
@@ -996,6 +1275,17 @@
             
             // Save progress
             saveProgress();
+
+            // Auto-advance step 2 if filled from URL
+            if (step === 2 && formData.autoAdvanceStep2) {
+                delete formData.autoAdvanceStep2;
+                setTimeout(() => {
+                    // Validate and advance
+                    if (formData.name && formData.profession && formData.email) {
+                        goToStep(3);
+                    }
+                }, 500);
+            }
         }
 
         function saveProgress() {
@@ -1168,20 +1458,96 @@
             goToStep(5);
         });
 
-        // Step 5: Create Bot
+        // Step 5: BotFather message auto-parse
+        document.getElementById('botfatherMessage').addEventListener('input', (e) => {
+            const message = e.target.value;
+            
+            // Try to parse token
+            const tokenMatch = message.match(/(\d+:[A-Za-z0-9_-]+)/);
+            
+            // Try to parse username
+            const usernameMatch = message.match(/t\.me\/(\w+Bot)|@(\w+Bot)/i);
+            
+            // Try to parse bot name (appears before "You will find it at")
+            let botName = '';
+            const nameMatch = message.match(/Congratulations on your new bot[.\s]+(.+?)\./i);
+            if (nameMatch) {
+                botName = nameMatch[1].trim();
+            } else {
+                // Alternative: extract from "chosen name" pattern
+                const altMatch = message.match(/call it[?\s]+(.+?)[.\n]/i);
+                if (altMatch) {
+                    botName = altMatch[1].trim();
+                }
+            }
+            
+            // Show parsed results
+            const parsedResults = document.getElementById('parsedResults');
+            const manualFields = document.getElementById('manualFields');
+            
+            if (tokenMatch || usernameMatch) {
+                parsedResults.classList.remove('hidden');
+                
+                if (tokenMatch) {
+                    const token = tokenMatch[1];
+                    document.getElementById('parsedToken').classList.remove('hidden');
+                    document.getElementById('parsedTokenValue').textContent = token.substring(0, 20) + '...';
+                    document.getElementById('botToken').value = token;
+                }
+                
+                if (usernameMatch) {
+                    const username = usernameMatch[1] || usernameMatch[2];
+                    document.getElementById('parsedUsername').classList.remove('hidden');
+                    document.getElementById('parsedUsernameValue').textContent = '@' + username;
+                    document.getElementById('botUsername').value = '@' + username;
+                }
+                
+                if (botName) {
+                    document.getElementById('parsedName').classList.remove('hidden');
+                    document.getElementById('parsedNameValue').textContent = botName;
+                    document.getElementById('botName').value = botName;
+                }
+                
+                // Hide manual fields if parsing succeeded
+                manualFields.classList.add('hidden');
+            } else if (message.length > 50) {
+                // Parsing failed, show manual option
+                parsedResults.classList.add('hidden');
+                manualFields.classList.remove('hidden');
+            }
+        });
+
+        // Manual fields toggle
+        document.getElementById('showManualFields')?.addEventListener('click', () => {
+            document.getElementById('manualInputs').classList.toggle('hidden');
+        });
+
         // Restore bot values
-        if (formData.botToken) document.getElementById('botToken').value = formData.botToken;
+        if (formData.botToken) {
+            document.getElementById('botToken').value = formData.botToken;
+            // Could also populate the textarea with a reconstructed message, but not essential
+        }
         if (formData.botUsername) document.getElementById('botUsername').value = formData.botUsername;
         if (formData.botName) document.getElementById('botName').value = formData.botName;
 
         document.getElementById('step5Next').addEventListener('click', () => {
-            formData.botToken = document.getElementById('botToken').value.trim();
-            formData.botUsername = document.getElementById('botUsername').value.trim();
-            formData.botName = document.getElementById('botName').value.trim();
+            // Get values from either parsed hidden fields or manual inputs
+            let token = document.getElementById('botToken').value.trim();
+            let username = document.getElementById('botUsername').value.trim();
+            let name = document.getElementById('botName').value.trim();
+            
+            // Fallback to manual inputs if hidden fields empty
+            if (!token) token = document.getElementById('botTokenManual')?.value.trim() || '';
+            if (!username) username = document.getElementById('botUsernameManual')?.value.trim() || '';
+            if (!name) name = document.getElementById('botNameManual')?.value.trim() || '';
+            
+            formData.botToken = token;
+            formData.botUsername = username;
+            formData.botName = name;
             
             // Validation
             if (!formData.botToken || !formData.botUsername || !formData.botName) {
-                alert(currentLang === 'pt' ? 'Por favor, preencha todos os campos do bot.' : 'Please fill in all bot fields.');
+                alert(currentLang === 'pt' ? 'Por favor, preencha todos os campos do bot ou cole a mensagem completa do BotFather.' : 'Please fill in all bot fields or paste the complete BotFather message.');
                 return;
             }
             
@@ -1303,6 +1669,26 @@
                     setTimeout(() => confetti.remove(), 5000);
                 }, i * 50);
             }
+        }
+
+        /**
+         * Generate onboarding URL with pre-filled data
+         * This function is called by the sales bot to create redirect links
+         * @param {Object} data - {name, email, profession, phone, telegram}
+         * @returns {string} Full onboarding URL with query parameters
+         */
+        function generateOnboardingUrl(data) {
+            const baseUrl = window.location.origin + window.location.pathname;
+            const params = new URLSearchParams();
+            
+            if (data.name) params.set('name', data.name);
+            if (data.email) params.set('email', data.email);
+            if (data.profession) params.set('profession', data.profession);
+            if (data.phone) params.set('phone', data.phone);
+            if (data.telegram) params.set('telegram', data.telegram);
+            if (data.lang) params.set('lang', data.lang);
+            
+            return `${baseUrl}?${params.toString()}`;
         }
 
         // Initialize
