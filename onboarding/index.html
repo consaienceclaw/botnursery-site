@@ -198,6 +198,120 @@
         </div>
     </div>
 
+    <!-- Agreement Modal -->
+    <div id="agreementModal" class="modal">
+        <div class="bg-white rounded-xl max-w-3xl mx-4 my-8 max-h-[90vh] flex flex-col shadow-2xl" style="width: 95%;">
+            <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-t-xl p-6 text-white flex-shrink-0">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-xl font-bold">
+                        <span class="lang-pt">📄 Termos de Serviço — BotNursery</span>
+                        <span class="lang-en hidden">📄 Terms of Service — BotNursery</span>
+                    </h2>
+                    <button onclick="closeAgreementModal()" class="text-white text-2xl hover:opacity-70">&times;</button>
+                </div>
+            </div>
+            <div class="overflow-y-auto p-6 flex-1 text-sm text-gray-700 space-y-6" id="agreementFullText">
+                <!-- Section 1 -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2"><span class="text-blue-600">1.</span> <span class="lang-pt">Objeto</span><span class="lang-en hidden">Purpose</span></h3>
+                    <div class="pl-4 lang-pt">
+                        <p>BotNursery fornece uma plataforma de assistente digital alimentada por inteligência artificial. O assistente é treinado por você e para você, refletindo seu conhecimento e abordagem profissional. Opera via Telegram (e futuros canais). O bot representa suas orientações e conhecimento, NÃO constitui aconselhamento independente. É uma ferramenta de apoio — a decisão profissional final sempre permanece com você.</p>
+                    </div>
+                    <div class="pl-4 lang-en hidden">
+                        <p>BotNursery provides an AI-powered digital assistant platform. The assistant is trained by and for you, reflecting your knowledge and professional approach. Operates via Telegram (and future channels). The bot represents your guidance and knowledge, NOT independent advice. It is a support tool — final professional decisions always remain with you.</p>
+                    </div>
+                </section>
+                <!-- Section 2 -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2"><span class="text-blue-600">2.</span> <span class="lang-pt">Serviços Incluídos</span><span class="lang-en hidden">Services Included</span></h3>
+                    <ul class="list-disc pl-8 space-y-1 lang-pt"><li>Criação e configuração de assistente de IA personalizado</li><li>Treinamento de personalidade e base de conhecimento</li><li>Implantação no Telegram</li><li>Manutenção contínua e atualizações</li><li>Suporte técnico via BotMother e equipe</li><li>Infraestrutura de consentimento para pacientes/clientes</li></ul>
+                    <ul class="list-disc pl-8 space-y-1 lang-en hidden"><li>Custom AI assistant creation and configuration</li><li>Bot personality and knowledge base training</li><li>Telegram deployment</li><li>Ongoing maintenance and updates</li><li>Technical support via BotMother and team</li><li>Patient/client consent form infrastructure</li></ul>
+                </section>
+                <!-- Section 3 -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2"><span class="text-blue-600">3.</span> <span class="lang-pt">Responsabilidades do Profissional</span><span class="lang-en hidden">Professional's Responsibilities</span></h3>
+                    <ul class="list-disc pl-8 space-y-1 lang-pt"><li>Fornecer materiais de treinamento precisos</li><li>Revisar e aprovar respostas do bot durante treinamento</li><li>Manter padrões profissionais</li><li>Garantir consentimento informado do paciente/cliente</li><li><strong>Não substituir</strong> seu julgamento profissional pelo bot</li><li>Manter credenciais seguras</li><li>Reportar erros ou respostas inadequadas</li><li>Cumprir regulamentações aplicáveis (HIPAA, LGPD)</li></ul>
+                    <ul class="list-disc pl-8 space-y-1 lang-en hidden"><li>Provide accurate training materials</li><li>Review and approve bot responses during training</li><li>Maintain professional standards</li><li>Ensure patient/client informed consent</li><li><strong>Not replace</strong> your professional judgment with the bot</li><li>Keep credentials secure</li><li>Report errors or inappropriate responses</li><li>Comply with applicable regulations (HIPAA, LGPD)</li></ul>
+                </section>
+                <!-- Section 4 -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2"><span class="text-blue-600">4.</span> <span class="lang-pt">Responsabilidades da BotNursery</span><span class="lang-en hidden">BotNursery's Responsibilities</span></h3>
+                    <ul class="list-disc pl-8 space-y-1 lang-pt"><li>Manter uptime e segurança da plataforma</li><li>Proteger dados com criptografia e controles de acesso</li><li><strong>NÃO acessar</strong> dados de pacientes exceto para suporte técnico com seu consentimento</li><li>Fornecer atualizações contínuas</li><li>Notificar sobre incidentes de dados dentro de 48 horas</li></ul>
+                    <ul class="list-disc pl-8 space-y-1 lang-en hidden"><li>Maintain platform uptime and security</li><li>Protect data with encryption and access controls</li><li><strong>NOT access</strong> patient data except for technical support with your consent</li><li>Provide ongoing updates</li><li>Notify of data incidents within 48 hours</li></ul>
+                </section>
+                <!-- Section 5 -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2"><span class="text-blue-600">5.</span> <span class="lang-pt">Dados e Privacidade</span><span class="lang-en hidden">Data & Privacy</span></h3>
+                    <ul class="list-disc pl-8 space-y-1 lang-pt"><li>Todos os dados de pacientes/clientes <strong>pertencem a você</strong></li><li>BotNursery processa dados como <strong>operador de dados</strong></li><li>Dados em servidores criptografados (UE)</li><li>Sem compartilhamento com terceiros</li><li>Exportação ou exclusão de dados a qualquer momento</li><li>Conformidade LGPD e HIPAA</li><li>Provedores de IA (Anthropic) podem processar dados — <strong>sem treinamento com dados de usuários</strong></li></ul>
+                    <ul class="list-disc pl-8 space-y-1 lang-en hidden"><li>All patient/client data <strong>belongs to you</strong></li><li>BotNursery processes data as a <strong>data processor</strong></li><li>Data on encrypted servers (EU)</li><li>No data sharing with third parties</li><li>Data export or deletion at any time</li><li>LGPD and HIPAA compliant</li><li>AI providers (Anthropic) may process data — <strong>no training on user data</strong></li></ul>
+                </section>
+                <!-- Section 6 -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2"><span class="text-blue-600">6.</span> <span class="lang-pt">Propriedade Intelectual</span><span class="lang-en hidden">Intellectual Property</span></h3>
+                    <ul class="list-disc pl-8 space-y-1 lang-pt"><li>Seus materiais de treinamento permanecem sua propriedade</li><li>A personalidade do bot é co-criada e pertence a você</li><li>BotNursery retém direitos sobre a plataforma e infraestrutura</li><li>Padrões agregados e anonimizados podem ser usados para melhorar a plataforma</li></ul>
+                    <ul class="list-disc pl-8 space-y-1 lang-en hidden"><li>Your training materials remain your property</li><li>Bot personality is co-created and belongs to you</li><li>BotNursery retains rights to platform and infrastructure</li><li>Aggregated, anonymized patterns may be used to improve the platform</li></ul>
+                </section>
+                <!-- Section 7 -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2"><span class="text-blue-600">7.</span> <span class="lang-pt">Preços e Pagamento</span><span class="lang-en hidden">Pricing & Payment</span></h3>
+                    <ul class="list-disc pl-8 space-y-1 lang-pt"><li>Plano base a partir de R$149/mês (US$29) + custo por paciente/cliente/aluno ativo</li><li>7 dias de teste gratuito; cancele quando quiser (basta solicitar ao seu agente)</li><li>Preços futuros comunicados com 30 dias de antecedência</li><li>Sem reembolsos para meses parciais</li></ul>
+                    <ul class="list-disc pl-8 space-y-1 lang-en hidden"><li>Base plan from $29/month (R$149) + per active patient/client/student cost</li><li>7-day free trial; cancel anytime (just ask your agent)</li><li>Future pricing communicated 30 days in advance</li><li>No refunds for partial months</li></ul>
+                </section>
+                <!-- Section 7.1 - Fair Use -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2"><span class="text-blue-600">7.1</span> <span class="lang-pt">Política de Uso Justo</span><span class="lang-en hidden">Fair Use Policy</span></h3>
+                    <div class="pl-4 lang-pt">
+                        <p>O uso da plataforma está sujeito a limites de uso justo. O uso pelo profissional é limitado a 5.000.000 de tokens por mês, e o uso por paciente/cliente/aluno é limitado a 500.000 tokens por mês. Uso além destes limites pode resultar em redução temporária da velocidade do serviço ou cobrança adicional mediante aviso prévio. Estes limites são revisados periodicamente e podem ser ajustados com 30 dias de antecedência.</p>
+                    </div>
+                    <div class="pl-4 lang-en hidden">
+                        <p>Platform usage is subject to fair use limits. Professional usage is limited to 5,000,000 tokens per month, and per-patient/client/student usage is limited to 500,000 tokens per month. Usage beyond these limits may result in temporary service speed reduction or additional charges upon prior notice. These limits are reviewed periodically and may be adjusted with 30 days notice.</p>
+                    </div>
+                </section>
+                <!-- Section 8 -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2"><span class="text-blue-600">8.</span> <span class="lang-pt">Prazo e Rescisão</span><span class="lang-en hidden">Term & Termination</span></h3>
+                    <ul class="list-disc pl-8 space-y-1 lang-pt"><li>Contrato mês a mês</li><li>Qualquer parte pode rescindir com 30 dias de aviso</li><li>Na rescisão: exportação completa de dados, bot desativado</li><li>Dados mantidos por 90 dias, depois excluídos</li></ul>
+                    <ul class="list-disc pl-8 space-y-1 lang-en hidden"><li>Month-to-month agreement</li><li>Either party may terminate with 30 days notice</li><li>Upon termination: full data export, bot deactivated</li><li>Data retained 90 days, then deleted</li></ul>
+                </section>
+                <!-- Section 9 -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2"><span class="text-blue-600">9.</span> <span class="lang-pt">Limitação de Responsabilidade</span><span class="lang-en hidden">Limitation of Liability</span></h3>
+                    <ul class="list-disc pl-8 space-y-1 lang-pt"><li>BotNursery é uma ferramenta, <strong>não um consultor profissional</strong></li><li>Você é responsável por todas as decisões profissionais</li><li>BotNursery não se responsabiliza por respostas usadas sem sua revisão, resultados de pacientes, ou conformidade regulatória</li><li>Responsabilidade máxima limitada às taxas pagas nos 12 meses anteriores</li></ul>
+                    <ul class="list-disc pl-8 space-y-1 lang-en hidden"><li>BotNursery is a tool, <strong>not a professional advisor</strong></li><li>You are responsible for all professional decisions</li><li>BotNursery not liable for responses used without your review, patient outcomes, or regulatory compliance</li><li>Maximum liability limited to fees paid in prior 12 months</li></ul>
+                </section>
+                <!-- Section 10 -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2"><span class="text-blue-600">10.</span> <span class="lang-pt">Confidencialidade</span><span class="lang-en hidden">Confidentiality</span></h3>
+                    <ul class="list-disc pl-8 space-y-1 lang-pt"><li>Ambas as partes concordam em manter informações confidenciais privadas</li><li>Dados de pacientes são o mais alto nível de confidencialidade</li><li>Equipe BotNursery pode acessar configuração do bot apenas para fins de suporte</li></ul>
+                    <ul class="list-disc pl-8 space-y-1 lang-en hidden"><li>Both parties agree to keep confidential information private</li><li>Patient data is the highest level of confidentiality</li><li>BotNursery team may access bot configuration for support purposes only</li></ul>
+                </section>
+                <!-- Section 11 -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2"><span class="text-blue-600">11.</span> <span class="lang-pt">Modificações</span><span class="lang-en hidden">Modifications</span></h3>
+                    <ul class="list-disc pl-8 space-y-1 lang-pt"><li>BotNursery pode atualizar estes termos com 30 dias de aviso</li><li>Uso continuado após o aviso constitui aceitação</li><li>Mudanças materiais requerem nova assinatura</li></ul>
+                    <ul class="list-disc pl-8 space-y-1 lang-en hidden"><li>BotNursery may update terms with 30 days notice</li><li>Continued use after notice constitutes acceptance</li><li>Material changes require re-signing</li></ul>
+                </section>
+                <!-- Section 12 -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2"><span class="text-blue-600">12.</span> <span class="lang-pt">Lei Aplicável</span><span class="lang-en hidden">Governing Law</span></h3>
+                    <ul class="list-disc pl-8 space-y-1 lang-pt"><li>Lei brasileira (LGPD) para profissionais brasileiros</li><li>Lei dos EUA (Califórnia) para profissionais nos EUA</li><li>Disputas resolvidas por arbitragem em sua jurisdição</li></ul>
+                    <ul class="list-disc pl-8 space-y-1 lang-en hidden"><li>Brazilian law (LGPD) for Brazilian professionals</li><li>US law (California) for US-based professionals</li><li>Disputes resolved by arbitration in your jurisdiction</li></ul>
+                </section>
+                <!-- Section 13 -->
+                <section>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2"><span class="text-blue-600">13.</span> <span class="lang-pt">Contato</span><span class="lang-en hidden">Contact</span></h3>
+                    <ul class="list-disc pl-8 space-y-1"><li><strong>Email:</strong> <a href="mailto:hello@botnursery.ai" class="text-blue-600">hello@botnursery.ai</a></li><li><strong>Web:</strong> <a href="https://www.botnursery.ai" class="text-blue-600">www.botnursery.ai</a></li><li><strong><span class="lang-pt">Suporte:</span><span class="lang-en hidden">Support:</span></strong> <span class="lang-pt">via BotMother no Telegram</span><span class="lang-en hidden">via BotMother on Telegram</span></li></ul>
+                </section>
+            </div>
+            <div class="border-t p-4 flex-shrink-0">
+                <button onclick="closeAgreementModal()" class="w-full gradient-bg text-white font-semibold py-3 rounded-lg hover:opacity-90 transition-all">
+                    <span class="lang-pt">Fechar</span>
+                    <span class="lang-en hidden">Close</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Pre-fill Banner -->
     <div id="prefillBanner" class="hidden fixed top-20 left-0 right-0 z-30">
         <div class="max-w-4xl mx-auto px-4">
@@ -252,24 +366,26 @@
                     <!-- Starter Plan -->
                     <div class="plan-card bg-white rounded-xl p-6 card-shadow relative" data-plan="starter">
                         <h3 class="text-2xl font-bold text-gray-800 mb-2">Starter</h3>
-                        <div class="text-3xl font-bold text-purple-600 mb-1">$29<span class="text-lg text-gray-500">/mo</span></div>
-                        <div class="text-sm text-gray-500 mb-4">(R$149/mo)</div>
+                        <div class="text-3xl font-bold text-purple-600 mb-1">
+                            <span class="lang-pt">R$149<span class="text-lg text-gray-500">/mês</span></span>
+                            <span class="lang-en hidden">$29<span class="text-lg text-gray-500">/mo</span></span>
+                        </div>
                         <div class="text-gray-600 mb-4">
-                            <span class="lang-pt">+ $5/paciente, cliente ou aluno ativo/mês</span>
+                            <span class="lang-pt">+ R$25/paciente, cliente ou aluno ativo/mês</span>
                             <span class="lang-en hidden">+ $5/active patient, client or student/mo</span>
                             <span class="info-icon" onclick="openPricingModal()">ℹ️</span>
-                            <br>
-                            <span class="text-xs text-gray-500">(R$25/paciente, cliente ou aluno)</span>
                         </div>
                         <div class="border-t pt-4 mb-4">
                             <div class="text-sm text-gray-600 space-y-2">
                                 <div class="flex justify-between">
                                     <span>5 <span class="lang-pt">pacientes, clientes ou alunos</span><span class="lang-en hidden">patients, clients or students</span>:</span>
-                                    <span class="font-semibold">$54/mo</span>
+                                    <span class="font-semibold lang-pt">R$274/mês</span>
+                                    <span class="font-semibold lang-en hidden">$54/mo</span>
                                 </div>
                                 <div class="flex justify-between">
                                     <span>20 <span class="lang-pt">pacientes, clientes ou alunos</span><span class="lang-en hidden">patients, clients or students</span>:</span>
-                                    <span class="font-semibold">$129/mo</span>
+                                    <span class="font-semibold lang-pt">R$649/mês</span>
+                                    <span class="font-semibold lang-en hidden">$129/mo</span>
                                 </div>
                             </div>
                         </div>
@@ -299,31 +415,29 @@
                             <span class="lang-en hidden">Founding Practitioner</span>
                         </h3>
                         <div class="text-3xl font-bold text-purple-600 mb-1">
-                            <span class="line-through text-gray-400 text-xl">$29</span> $15<span class="text-lg text-gray-500">/mo</span>
-                        </div>
-                        <div class="text-sm text-gray-500 mb-1">
-                            <span class="line-through text-gray-400">R$149</span> R$75/mo
+                            <span class="lang-pt"><span class="line-through text-gray-400 text-xl">R$149</span> R$75<span class="text-lg text-gray-500">/mês</span></span>
+                            <span class="lang-en hidden"><span class="line-through text-gray-400 text-xl">$29</span> $15<span class="text-lg text-gray-500">/mo</span></span>
                         </div>
                         <div class="text-xs text-orange-600 font-semibold mb-3">
                             <span class="lang-pt">50% OFF por 6 meses!</span>
                             <span class="lang-en hidden">50% OFF for 6 months!</span>
                         </div>
                         <div class="text-gray-600 mb-4">
-                            <span class="lang-pt">+ $2.50/paciente, cliente ou aluno ativo/mês</span>
+                            <span class="lang-pt">+ R$12,50/paciente, cliente ou aluno ativo/mês</span>
                             <span class="lang-en hidden">+ $2.50/active patient, client or student/mo</span>
                             <span class="info-icon" onclick="openPricingModal()">ℹ️</span>
-                            <br>
-                            <span class="text-xs text-gray-500">(R$12.50/paciente, cliente ou aluno)</span>
                         </div>
                         <div class="border-t pt-4 mb-4">
                             <div class="text-sm text-gray-600 space-y-2">
                                 <div class="flex justify-between">
                                     <span>5 <span class="lang-pt">pacientes, clientes ou alunos</span><span class="lang-en hidden">patients, clients or students</span>:</span>
-                                    <span class="font-semibold">$27.50/mo</span>
+                                    <span class="font-semibold lang-pt">R$137,50/mês</span>
+                                    <span class="font-semibold lang-en hidden">$27.50/mo</span>
                                 </div>
                                 <div class="flex justify-between">
                                     <span>20 <span class="lang-pt">pacientes, clientes ou alunos</span><span class="lang-en hidden">patients, clients or students</span>:</span>
-                                    <span class="font-semibold">$65/mo</span>
+                                    <span class="font-semibold lang-pt">R$325/mês</span>
+                                    <span class="font-semibold lang-en hidden">$65/mo</span>
                                 </div>
                             </div>
                         </div>
@@ -539,14 +653,6 @@
                             <input type="text" id="cardName" class="w-full stripe-input">
                         </div>
 
-                        <!-- Stripe security note -->
-                        <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
-                            <p class="text-sm text-gray-700">
-                                <span class="lang-pt">🔒 Seus dados de cartão são processados diretamente pelo Stripe. Nem nós nem nossos agentes têm acesso ao número do seu cartão.</span>
-                                <span class="lang-en hidden">🔒 Your card data is processed directly by Stripe. Neither we nor our agents have access to your card number.</span>
-                            </p>
-                        </div>
-
                         <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
                             <div class="flex items-center space-x-2 text-blue-800 text-sm">
                                 <span>🔒</span>
@@ -556,8 +662,8 @@
                                         <span class="lang-en hidden">Secure payment via Stripe</span>
                                     </div>
                                     <div class="text-xs mt-1">
-                                        <span class="lang-pt">Suas informações de cartão vão diretamente para o <strong>Stripe</strong>, nosso sistema de pagamentos. Nós não temos acesso aos dados do seu cartão — nem nossos agentes. Sem cobrança por 7 dias. Cancele quando quiser.</span>
-                                        <span class="lang-en hidden">Your card information goes directly to <strong>Stripe</strong>, our payment system. We do not have access to your card data — nor do our agents. No charge for 7 days. Cancel anytime.</span>
+                                        <span class="lang-pt">Suas informações de cartão vão diretamente para o <strong>Stripe</strong>, nosso sistema de pagamentos. Nós não temos acesso aos dados do seu cartão — nem nossos agentes. Sem cobrança por 7 dias. Cancele quando quiser (basta solicitar ao seu agente robô).</span>
+                                        <span class="lang-en hidden">Your card information goes directly to <strong>Stripe</strong>, our payment system. We do not have access to your card data — nor do our agents. No charge for 7 days. Cancel anytime (just ask your AI agent).</span>
                                     </div>
                                 </div>
                             </div>
@@ -566,7 +672,7 @@
                         <div class="text-xs text-gray-500 text-center mt-4">
                             <span class="lang-pt">Ao adicionar seu cartão, você concorda com nossos</span>
                             <span class="lang-en hidden">By adding your card, you agree to our</span>
-                            <a href="/agreement/" class="text-purple-600 hover:underline">
+                            <a href="#" onclick="openAgreementModal(); return false;" class="text-purple-600 hover:underline">
                                 <span class="lang-pt">Termos de Serviço</span>
                                 <span class="lang-en hidden">Terms of Service</span>
                             </a>
@@ -692,6 +798,20 @@
                                 <span class="lang-pt">Deve ser apenas números</span>
                                 <span class="lang-en hidden">Must be numbers only</span>
                             </p>
+                        </div>
+
+                        <!-- Alternative: paste userinfobot response -->
+                        <div class="mt-4 border-t pt-4">
+                            <p class="text-sm text-gray-600 mb-2">
+                                <span class="lang-pt">Ou cole a resposta do @userinfobot aqui:</span>
+                                <span class="lang-en hidden">Or paste the @userinfobot response here:</span>
+                            </p>
+                            <textarea id="userinfoResponse" class="w-full stripe-input text-sm font-mono" rows="4" placeholder="Id: 123456789&#10;First: João&#10;Last: Silva&#10;Username: @joaosilva"></textarea>
+                            <div id="parsedTelegramId" class="hidden parsed-field mt-2">
+                                <span class="checkmark">✅</span>
+                                <span>Telegram ID: </span>
+                                <span class="value" id="parsedTelegramIdValue"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -980,7 +1100,7 @@ Keep your token secure..."></textarea>
                         </div>
 
                         <div class="mt-6 text-center">
-                            <a href="/agreement/" target="_blank" class="text-purple-600 hover:underline text-sm">
+                            <a href="#" onclick="openAgreementModal(); return false;" class="text-purple-600 hover:underline text-sm">
                                 <span class="lang-pt">📄 Ler os Termos de Serviço completos</span>
                                 <span class="lang-en hidden">📄 Read the full Terms of Service</span>
                             </a>
@@ -1255,6 +1375,22 @@ Keep your token secure..."></textarea>
             }
         });
 
+        // Agreement modal functions
+        function openAgreementModal() {
+            document.getElementById('agreementModal').classList.add('show');
+            updateLanguage(); // ensure modal content matches current lang
+        }
+
+        function closeAgreementModal() {
+            document.getElementById('agreementModal').classList.remove('show');
+        }
+
+        document.getElementById('agreementModal').addEventListener('click', (e) => {
+            if (e.target.id === 'agreementModal') {
+                closeAgreementModal();
+            }
+        });
+
         // Navigation
         function goToStep(step) {
             // Hide all steps
@@ -1450,6 +1586,19 @@ Keep your token secure..."></textarea>
             document.getElementById('telegramId').value = formData.telegramId;
         }
 
+        // Parse @userinfobot response
+        document.getElementById('userinfoResponse').addEventListener('input', (e) => {
+            const text = e.target.value;
+            const idMatch = text.match(/Id:\s*(\d+)/i);
+            if (idMatch) {
+                document.getElementById('telegramId').value = idMatch[1];
+                document.getElementById('parsedTelegramId').classList.remove('hidden');
+                document.getElementById('parsedTelegramIdValue').textContent = idMatch[1];
+            } else {
+                document.getElementById('parsedTelegramId').classList.add('hidden');
+            }
+        });
+
         document.getElementById('step4Next').addEventListener('click', () => {
             formData.telegramId = document.getElementById('telegramId').value.trim();
             
@@ -1472,17 +1621,16 @@ Keep your token secure..."></textarea>
             // Try to parse username
             const usernameMatch = message.match(/t\.me\/(\w+Bot)|@(\w+Bot)/i);
             
-            // Try to parse bot name (appears before "You will find it at")
+            // Try to parse bot name from username (remove trailing "Bot" and split camelCase)
             let botName = '';
-            const nameMatch = message.match(/Congratulations on your new bot[.\s]+(.+?)\./i);
-            if (nameMatch) {
-                botName = nameMatch[1].trim();
-            } else {
-                // Alternative: extract from "chosen name" pattern
-                const altMatch = message.match(/call it[?\s]+(.+?)[.\n]/i);
-                if (altMatch) {
-                    botName = altMatch[1].trim();
-                }
+            if (usernameMatch) {
+                const rawUsername = usernameMatch[1] || usernameMatch[2];
+                // Remove trailing "Bot" and split camelCase/underscores into words
+                botName = rawUsername
+                    .replace(/Bot$/i, '')
+                    .replace(/_/g, ' ')
+                    .replace(/([a-z])([A-Z])/g, '$1 $2')
+                    .trim();
             }
             
             // Show parsed results
@@ -1586,6 +1734,9 @@ Keep your token secure..."></textarea>
             document.getElementById('loadingState').classList.remove('hidden');
             
             try {
+                // Capture agreement text for versioning
+                const agreementText = document.getElementById('agreementFullText')?.innerText || '';
+
                 const response = await fetch(API_URL, {
                     method: 'POST',
                     headers: {
@@ -1604,6 +1755,10 @@ Keep your token secure..."></textarea>
                         botUsername: formData.botUsername,
                         botName: formData.botName,
                         agreementSigned: true,
+                        agreementVersion: '2026-02-20-v1',
+                        agreementText: agreementText,
+                        agreementSignedAt: formData.timestamp,
+                        agreementLanguage: currentLang,
                         timestamp: formData.timestamp
                     })
                 });
