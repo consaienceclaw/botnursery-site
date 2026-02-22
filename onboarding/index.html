@@ -1651,6 +1651,9 @@ Keep your token secure..."></textarea>
 
         document.getElementById('noTelegram').addEventListener('click', () => {
             document.getElementById('telegramDownload').classList.remove('hidden');
+            // Also show the ID input and Next button so user can proceed
+            document.getElementById('step4b').classList.remove('hidden');
+            document.getElementById('step4Next').classList.remove('hidden');
         });
 
         document.getElementById('downloadedTelegram').addEventListener('click', () => {
