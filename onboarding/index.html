@@ -1424,8 +1424,12 @@ Keep your token secure..."></textarea>
             }
         });
 
-        // Navigation
+        // Navigation — debounce to prevent click-through on overlapping buttons
+        let _navLock = false;
         function goToStep(step) {
+            if (_navLock) return;
+            _navLock = true;
+            setTimeout(() => _navLock = false, 300);
             // Hide all steps
             for (let i = 1; i <= 7; i++) {
                 document.getElementById(`step${i}`).classList.add('hidden');
