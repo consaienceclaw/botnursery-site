@@ -170,8 +170,8 @@
                     <span class="font-bold text-lg text-gray-800">BotNursery</span>
                 </div>
                 <div class="text-sm text-gray-600" id="progressText">
-                    <span class="lang-pt">Passo 1 de 7</span>
-                    <span class="lang-en hidden">Step 1 of 7</span>
+                    <span class="lang-pt">Passo 1 de 6</span>
+                    <span class="lang-en hidden">Step 1 of 6</span>
                 </div>
             </div>
             <div class="w-full bg-gray-200 rounded-full h-2">
@@ -604,78 +604,74 @@
                 </div>
             </div>
 
-            <!-- Step 3: Payment -->
+            <!-- Step 3: Payment — Stripe Checkout redirect -->
             <div id="step3" class="step-content hidden">
                 <div class="text-center mb-8">
                     <h1 class="text-4xl font-bold text-gray-800 mb-3">
-                        <span class="lang-pt">Método de Pagamento</span>
-                        <span class="lang-en hidden">Payment Method</span>
+                        <span class="lang-pt">Pagamento Seguro</span>
+                        <span class="lang-en hidden">Secure Payment</span>
                     </h1>
                     <p class="text-xl text-green-600 font-semibold">
-                        <span class="lang-pt">Seu trial de 7 dias é gratuito</span>
-                        <span class="lang-en hidden">Your 7-day trial is free</span>
+                        <span class="lang-pt">✨ Seu trial de 7 dias é gratuito!</span>
+                        <span class="lang-en hidden">✨ Your 7-day trial is free!</span>
                     </p>
                     <p class="text-sm text-gray-600 mt-2">
-                        <span class="lang-pt">Cobrança inicia após o período de teste</span>
-                        <span class="lang-en hidden">Billing starts after trial period</span>
+                        <span class="lang-pt">Cobrança inicia apenas após o período de teste</span>
+                        <span class="lang-en hidden">Billing starts only after trial period</span>
                     </p>
                 </div>
 
                 <div class="bg-white rounded-xl p-8 card-shadow max-w-2xl mx-auto">
-                    <div class="space-y-6">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">
-                                <span class="lang-pt">Número do cartão</span>
-                                <span class="lang-en hidden">Card number</span>
-                            </label>
-                            <input type="text" id="cardNumber" class="w-full stripe-input" placeholder="1234 5678 9012 3456" maxlength="19">
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-4">
+                    <!-- Plan summary -->
+                    <div class="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-6">
+                        <div class="flex items-center justify-between">
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">
-                                    <span class="lang-pt">Validade</span>
-                                    <span class="lang-en hidden">Expiry</span>
-                                </label>
-                                <input type="text" id="cardExpiry" class="w-full stripe-input" placeholder="MM/YY" maxlength="5">
+                                <div class="font-semibold text-gray-800" id="checkoutPlanName">
+                                    <span class="lang-pt">Plano Selecionado</span>
+                                    <span class="lang-en hidden">Selected Plan</span>
+                                </div>
+                                <div class="text-sm text-gray-600 mt-1" id="checkoutPlanPrice"></div>
                             </div>
+                            <span class="text-3xl">🤖</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 mb-6">
+                        <div class="flex items-center text-sm text-gray-700">
+                            <span class="text-green-500 mr-2">✓</span>
+                            <span class="lang-pt">7 dias grátis — cancele quando quiser</span>
+                            <span class="lang-en hidden">7 days free — cancel anytime</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-700">
+                            <span class="text-green-500 mr-2">✓</span>
+                            <span class="lang-pt">Pagamento seguro via <strong>Stripe</strong></span>
+                            <span class="lang-en hidden">Secure payment via <strong>Stripe</strong></span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-700">
+                            <span class="text-green-500 mr-2">✓</span>
+                            <span class="lang-pt">Nós nunca vemos seus dados de cartão</span>
+                            <span class="lang-en hidden">We never see your card details</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-700">
+                            <span class="text-green-500 mr-2">✓</span>
+                            <span class="lang-pt">Código promocional? Use na próxima tela</span>
+                            <span class="lang-en hidden">Promo code? Use it on the next screen</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                        <div class="flex items-start space-x-2 text-blue-800 text-sm">
+                            <span class="mt-0.5">🔒</span>
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">CVV</label>
-                                <input type="text" id="cardCvv" class="w-full stripe-input" placeholder="123" maxlength="4">
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">
-                                <span class="lang-pt">Nome no cartão</span>
-                                <span class="lang-en hidden">Cardholder name</span>
-                            </label>
-                            <input type="text" id="cardName" class="w-full stripe-input">
-                        </div>
-
-                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
-                            <div class="flex items-center space-x-2 text-blue-800 text-sm">
-                                <span>🔒</span>
-                                <div>
-                                    <div class="font-semibold">
-                                        <span class="lang-pt">Pagamento seguro via Stripe</span>
-                                        <span class="lang-en hidden">Secure payment via Stripe</span>
-                                    </div>
-                                    <div class="text-xs mt-1">
-                                        <span class="lang-pt">Suas informações de cartão vão diretamente para o <strong>Stripe</strong>, nosso sistema de pagamentos. Nós não temos acesso aos dados do seu cartão — nem nossos agentes. Sem cobrança por 7 dias. Cancele quando quiser (basta solicitar ao seu agente robô).</span>
-                                        <span class="lang-en hidden">Your card information goes directly to <strong>Stripe</strong>, our payment system. We do not have access to your card data — nor do our agents. No charge for 7 days. Cancel anytime (just ask your AI agent).</span>
-                                    </div>
+                                <div class="font-semibold">
+                                    <span class="lang-pt">Como funciona</span>
+                                    <span class="lang-en hidden">How it works</span>
+                                </div>
+                                <div class="text-xs mt-1">
+                                    <span class="lang-pt">Você será redirecionado para o <strong>Stripe</strong> (nosso processador de pagamentos) para inserir seus dados de cartão de forma segura. Após confirmar, voltará automaticamente para completar seu cadastro.</span>
+                                    <span class="lang-en hidden">You'll be redirected to <strong>Stripe</strong> (our payment processor) to securely enter your card details. After confirming, you'll return automatically to complete your setup.</span>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="text-xs text-gray-500 text-center mt-4">
-                            <span class="lang-pt">Ao adicionar seu cartão, você concorda com nossos</span>
-                            <span class="lang-en hidden">By adding your card, you agree to our</span>
-                            <a href="#" onclick="openAgreementModal(); return false;" class="text-purple-600 hover:underline">
-                                <span class="lang-pt">Termos de Serviço</span>
-                                <span class="lang-en hidden">Terms of Service</span>
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -686,9 +682,17 @@
                         <span class="lang-en hidden">← Back</span>
                     </button>
                     <button id="step3Next" class="gradient-bg text-white px-12 py-4 rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transition-all">
-                        <span class="lang-pt">Próximo →</span>
-                        <span class="lang-en hidden">Next →</span>
+                        <span class="lang-pt">💳 Ir para Pagamento →</span>
+                        <span class="lang-en hidden">💳 Proceed to Payment →</span>
                     </button>
+                </div>
+                <!-- Loading state for checkout redirect -->
+                <div id="checkoutLoading" class="hidden text-center mt-6">
+                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-purple-500 border-t-transparent"></div>
+                    <p class="mt-2 text-gray-600">
+                        <span class="lang-pt">Redirecionando para o Stripe...</span>
+                        <span class="lang-en hidden">Redirecting to Stripe...</span>
+                    </p>
                 </div>
             </div>
 
@@ -1343,6 +1347,36 @@ Keep your token secure..."></textarea>
         // Load URL params (override saved data)
         loadUrlParameters();
 
+        // Handle Stripe return
+        (function handleStripeReturn() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('success') === 'true') {
+                // Payment successful — show success screen
+                // Clean URL
+                window.history.replaceState({}, '', window.location.pathname);
+                // Load saved formData for bot link
+                const saved = localStorage.getItem('botnursery_onboarding');
+                if (saved) {
+                    try { formData = { ...formData, ...JSON.parse(saved) }; } catch(e) {}
+                }
+                setTimeout(() => {
+                    if (formData.botUsername) {
+                        document.getElementById('botLink').textContent = formData.botUsername;
+                        document.getElementById('botLink').href = `https://t.me/${formData.botUsername.replace('@', '')}`;
+                    }
+                    goToStep(7);
+                    createConfetti();
+                    localStorage.removeItem('botnursery_onboarding');
+                }, 100);
+                return;
+            }
+            if (urlParams.get('canceled') === 'true') {
+                // User canceled Stripe — go back to agreement step
+                window.history.replaceState({}, '', window.location.pathname);
+                setTimeout(() => goToStep(6), 100);
+            }
+        })();
+
         // Language toggle
         document.getElementById('langToggle').addEventListener('click', () => {
             currentLang = currentLang === 'pt' ? 'en' : 'pt';
@@ -1402,17 +1436,25 @@ Keep your token secure..."></textarea>
             document.getElementById(`step${step}`).classList.remove('hidden');
             currentStep = step;
             
+            // Map internal steps to display steps (3 is skipped, user sees 1,2,4,5,6 as steps 1-5, 7=done)
+            const displayMap = {1:1, 2:2, 4:3, 5:4, 6:5, 7:6};
+            const displayStep = displayMap[step] || step;
+            const totalSteps = 6;
+            
             // Update progress bar
-            const progress = (step / 7) * 100;
+            const progress = (displayStep / totalSteps) * 100;
             document.getElementById('progressBar').style.width = `${progress}%`;
             
             // Update progress text
-            document.querySelector('#progressText .lang-pt').textContent = `Passo ${step} de 7`;
-            document.querySelector('#progressText .lang-en').textContent = `Step ${step} of 7`;
+            document.querySelector('#progressText .lang-pt').textContent = `Passo ${displayStep} de ${totalSteps}`;
+            document.querySelector('#progressText .lang-en').textContent = `Step ${displayStep} of ${totalSteps}`;
             
             // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
             
+            // Update checkout summary on step 3
+            if (step === 3) updateCheckoutSummary();
+
             // Save progress
             saveProgress();
 
@@ -1422,7 +1464,7 @@ Keep your token secure..."></textarea>
                 setTimeout(() => {
                     // Validate and advance
                     if (formData.name && formData.profession && formData.email) {
-                        goToStep(3);
+                        goToStep(4);
                     }
                 }, 500);
             }
@@ -1519,10 +1561,10 @@ Keep your token secure..."></textarea>
             }
             
             saveProgress();
-            goToStep(3);
+            goToStep(4);
         });
 
-        // Step 3: Payment (UI only)
+        // Step 3: Payment (now handled at end via Stripe Checkout — step is skipped)
         // Restore card values
         if (formData.cardNumber) document.getElementById('cardNumber').value = formData.cardNumber;
         if (formData.cardExpiry) document.getElementById('cardExpiry').value = formData.cardExpiry;
@@ -1537,28 +1579,64 @@ Keep your token secure..."></textarea>
         });
 
         // Auto-format expiry
-        document.getElementById('cardExpiry').addEventListener('input', (e) => {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length >= 2) {
-                value = value.slice(0, 2) + '/' + value.slice(2, 4);
+        // Update checkout plan summary when reaching step 3
+        function updateCheckoutSummary() {
+            const nameEl = document.getElementById('checkoutPlanName');
+            const priceEl = document.getElementById('checkoutPlanPrice');
+            const isBR = formData.country === 'BR' || currentLang === 'pt';
+            if (formData.plan === 'founding') {
+                nameEl.innerHTML = currentLang === 'pt' ? '🌟 Plano Fundador' : '🌟 Founding Practitioner';
+                priceEl.textContent = isBR ? 'R$149/mês + R$25 por paciente ativo' : '$29/mo + $5 per active patient';
+            } else {
+                nameEl.innerHTML = currentLang === 'pt' ? '🤖 Plano Inicial' : '🤖 Starter Plan';
+                priceEl.textContent = isBR ? 'R$149/mês + R$25 por paciente ativo' : '$29/mo + $5 per active patient';
             }
-            e.target.value = value;
-        });
+        }
 
-        document.getElementById('step3Next').addEventListener('click', () => {
-            formData.cardNumber = document.getElementById('cardNumber').value;
-            formData.cardExpiry = document.getElementById('cardExpiry').value;
-            formData.cardCvv = document.getElementById('cardCvv').value;
-            formData.cardName = document.getElementById('cardName').value;
-            
-            // Basic validation
-            if (!formData.cardNumber || !formData.cardExpiry || !formData.cardCvv || !formData.cardName) {
-                alert(currentLang === 'pt' ? 'Por favor, preencha todos os dados do cartão.' : 'Please fill in all card details.');
-                return;
+        document.getElementById('step3Next').addEventListener('click', async () => {
+            const btn = document.getElementById('step3Next');
+            const loading = document.getElementById('checkoutLoading');
+            btn.classList.add('hidden');
+            loading.classList.remove('hidden');
+
+            try {
+                const response = await fetch('https://api.botnursery.ai/create-checkout', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: formData.name,
+                        email: formData.email,
+                        profession: formData.profession === 'outro' ? formData.otherProfession : formData.profession,
+                        registration: formData.registration,
+                        phone: formData.phone,
+                        country: formData.country,
+                        plan: formData.plan,
+                        telegramId: formData.telegramId,
+                        botToken: formData.botToken,
+                        botUsername: formData.botUsername,
+                        botName: formData.botName,
+                        lang: currentLang,
+                        agreementVersion: '2026-02-20-v1',
+                        agreementSignedAt: formData.timestamp || new Date().toISOString(),
+                    })
+                });
+
+                const data = await response.json();
+                if (data.url) {
+                    // Save progress before redirecting
+                    saveProgress();
+                    window.location.href = data.url;
+                } else {
+                    throw new Error(data.error || 'Failed to create checkout');
+                }
+            } catch (err) {
+                console.error('Checkout error:', err);
+                alert(currentLang === 'pt'
+                    ? 'Erro ao conectar com o sistema de pagamento. Tente novamente.'
+                    : 'Error connecting to payment system. Please try again.');
+                btn.classList.remove('hidden');
+                loading.classList.add('hidden');
             }
-            
-            saveProgress();
-            goToStep(4);
         });
 
         // Step 4: Telegram setup
@@ -1737,11 +1815,10 @@ Keep your token secure..."></textarea>
                 // Capture agreement text for versioning
                 const agreementText = document.getElementById('agreementFullText')?.innerText || '';
 
-                const response = await fetch(API_URL, {
+                // Step 1: Save onboard data
+                await fetch(API_URL, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         name: formData.name,
                         profession: formData.profession === 'outro' ? formData.otherProfession : formData.profession,
@@ -1762,25 +1839,36 @@ Keep your token secure..."></textarea>
                         timestamp: formData.timestamp
                     })
                 });
-                
-                if (!response.ok) {
-                    throw new Error('API request failed');
+
+                // Step 2: Create Stripe Checkout session and redirect
+                const checkoutResponse = await fetch('https://api.botnursery.ai/create-checkout', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: formData.name,
+                        email: formData.email,
+                        profession: formData.profession === 'outro' ? formData.otherProfession : formData.profession,
+                        registration: formData.registration,
+                        phone: formData.phone,
+                        country: formData.country,
+                        plan: formData.plan,
+                        telegramId: formData.telegramId,
+                        botToken: formData.botToken,
+                        botUsername: formData.botUsername,
+                        botName: formData.botName,
+                        lang: currentLang,
+                        agreementVersion: '2026-02-20-v1',
+                        agreementSignedAt: formData.timestamp,
+                    })
+                });
+
+                const checkoutData = await checkoutResponse.json();
+                if (checkoutData.url) {
+                    saveProgress();
+                    window.location.href = checkoutData.url;
+                } else {
+                    throw new Error(checkoutData.error || 'Failed to create checkout');
                 }
-                
-                // Success!
-                document.getElementById('loadingState').classList.add('hidden');
-                
-                // Update bot link in success screen
-                document.getElementById('botLink').textContent = formData.botUsername;
-                document.getElementById('botLink').href = `https://t.me/${formData.botUsername.replace('@', '')}`;
-                
-                goToStep(7);
-                
-                // Create confetti
-                createConfetti();
-                
-                // Clear saved data
-                localStorage.removeItem('botnursery_onboarding');
                 
             } catch (error) {
                 console.error('Submission error:', error);
@@ -1789,21 +1877,10 @@ Keep your token secure..."></textarea>
                 document.getElementById('loadingState').classList.add('hidden');
                 document.getElementById('errorState').classList.remove('hidden');
                 document.getElementById('errorMessage').textContent = currentLang === 'pt' 
-                    ? 'Não foi possível conectar ao servidor. Por favor, verifique sua conexão e tente novamente.'
-                    : 'Could not connect to server. Please check your connection and try again.';
+                    ? 'Erro ao conectar com o sistema de pagamento. Por favor, tente novamente.'
+                    : 'Error connecting to payment system. Please try again.';
                 
-                // For now, also log to console and show success anyway (since API might not be ready)
-                console.log('Would have sent:', formData);
-                
-                // TEMPORARY: Show success anyway
-                setTimeout(() => {
-                    document.getElementById('errorState').classList.add('hidden');
-                    document.getElementById('botLink').textContent = formData.botUsername;
-                    document.getElementById('botLink').href = `https://t.me/${formData.botUsername.replace('@', '')}`;
-                    goToStep(7);
-                    createConfetti();
-                    localStorage.removeItem('botnursery_onboarding');
-                }, 2000);
+                document.getElementById('step6Next').classList.remove('hidden');
             }
         });
 
