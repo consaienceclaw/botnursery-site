@@ -1566,20 +1566,8 @@ Keep your token secure..."></textarea>
         });
 
         // Step 3: Payment (now handled at end via Stripe Checkout — step is skipped)
-        // Restore card values
-        if (formData.cardNumber) document.getElementById('cardNumber').value = formData.cardNumber;
-        if (formData.cardExpiry) document.getElementById('cardExpiry').value = formData.cardExpiry;
-        if (formData.cardCvv) document.getElementById('cardCvv').value = formData.cardCvv;
-        if (formData.cardName) document.getElementById('cardName').value = formData.cardName;
+        // Old card form elements removed — no restore needed
 
-        // Auto-format card number
-        document.getElementById('cardNumber').addEventListener('input', (e) => {
-            let value = e.target.value.replace(/\s/g, '');
-            let formatted = value.match(/.{1,4}/g)?.join(' ') || value;
-            e.target.value = formatted;
-        });
-
-        // Auto-format expiry
         // Update checkout plan summary when reaching step 3
         function updateCheckoutSummary() {
             const nameEl = document.getElementById('checkoutPlanName');
