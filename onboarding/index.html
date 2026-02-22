@@ -1326,10 +1326,7 @@ Keep your token secure..."></textarea>
                 }, 5000);
             }
 
-            // Auto-advance if step 2 is complete (only from URL params, not localStorage)
-            if (filledFields.includes('name') && filledFields.includes('email') && filledFields.includes('profession')) {
-                window._autoAdvanceFromUrl = true;
-            }
+            // Pre-filled fields from URL — user still reviews on step 2 (no auto-advance)
         }
 
         // Load saved progress
@@ -1461,15 +1458,7 @@ Keep your token secure..."></textarea>
             // Save progress
             saveProgress();
 
-            // Auto-advance step 2 if filled from URL params (not localStorage)
-            if (step === 2 && window._autoAdvanceFromUrl) {
-                window._autoAdvanceFromUrl = false;
-                setTimeout(() => {
-                    if (formData.name && formData.profession && formData.email) {
-                        goToStep(4);
-                    }
-                }, 500);
-            }
+            // No auto-advance — user always reviews pre-filled data
         }
 
         function saveProgress() {
