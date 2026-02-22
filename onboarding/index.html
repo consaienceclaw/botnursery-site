@@ -1424,12 +1424,8 @@ Keep your token secure..."></textarea>
             }
         });
 
-        // Navigation — debounce to prevent click-through on overlapping buttons
-        let _navLock = false;
+        // Navigation
         function goToStep(step) {
-            if (_navLock) return;
-            _navLock = true;
-            setTimeout(() => _navLock = false, 300);
             // Hide all steps
             for (let i = 1; i <= 7; i++) {
                 document.getElementById(`step${i}`).classList.add('hidden');
@@ -1452,6 +1448,10 @@ Keep your token secure..."></textarea>
             document.querySelector('#progressText .lang-pt').textContent = `Passo ${displayStep} de ${totalSteps}`;
             document.querySelector('#progressText .lang-en').textContent = `Step ${displayStep} of ${totalSteps}`;
             
+            // Block all clicks briefly to prevent click-through on overlapping buttons
+            document.body.style.pointerEvents = 'none';
+            setTimeout(() => document.body.style.pointerEvents = '', 400);
+
             // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
             
