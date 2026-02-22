@@ -1475,11 +1475,12 @@ Keep your token secure..."></textarea>
         }
 
         // Back buttons
+        // Back navigation — skip step 3 (old payment, now unused)
+        const backMap = {2:1, 4:2, 5:4, 6:5};
         document.querySelectorAll('.step-back').forEach(btn => {
             btn.addEventListener('click', () => {
-                if (currentStep > 1) {
-                    goToStep(currentStep - 1);
-                }
+                const prev = backMap[currentStep] || (currentStep > 1 ? currentStep - 1 : 1);
+                goToStep(prev);
             });
         });
 
