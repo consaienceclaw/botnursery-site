@@ -507,23 +507,17 @@
                                 <span class="text-red-500">*</span>
                             </label>
                             <select id="profession" class="w-full stripe-input" required>
-                                <option value="">
-                                    <span class="lang-pt">Selecione...</span>
-                                    <span class="lang-en hidden">Select...</span>
-                                </option>
-                                <option value="medico">Médico(a)</option>
-                                <option value="psicologo">Psicólogo(a)</option>
-                                <option value="nutricionista">Nutricionista</option>
-                                <option value="coach">Coach</option>
-                                <option value="advogado">Advogado(a)</option>
-                                <option value="fisioterapeuta">Fisioterapeuta</option>
-                                <option value="dentista">Dentista</option>
-                                <option value="consultor">Consultor(a)</option>
-                                <option value="personal">Personal Trainer</option>
-                                <option value="outro">
-                                    <span class="lang-pt">Outro</span>
-                                    <span class="lang-en hidden">Other</span>
-                                </option>
+                                <option value="" data-pt="Selecione..." data-en="Select...">Selecione...</option>
+                                <option value="medico" data-pt="Médico(a)" data-en="Doctor / Physician">Médico(a)</option>
+                                <option value="psicologo" data-pt="Psicólogo(a)" data-en="Psychologist">Psicólogo(a)</option>
+                                <option value="nutricionista" data-pt="Nutricionista" data-en="Nutritionist">Nutricionista</option>
+                                <option value="coach" data-pt="Coach" data-en="Coach">Coach</option>
+                                <option value="advogado" data-pt="Advogado(a)" data-en="Lawyer">Advogado(a)</option>
+                                <option value="fisioterapeuta" data-pt="Fisioterapeuta" data-en="Physical Therapist">Fisioterapeuta</option>
+                                <option value="dentista" data-pt="Dentista" data-en="Dentist">Dentista</option>
+                                <option value="consultor" data-pt="Consultor(a)" data-en="Consultant">Consultor(a)</option>
+                                <option value="personal" data-pt="Personal Trainer" data-en="Personal Trainer">Personal Trainer</option>
+                                <option value="outro" data-pt="Outro" data-en="Other">Outro</option>
                             </select>
                         </div>
 
@@ -573,22 +567,10 @@
                                 <span class="text-red-500">*</span>
                             </label>
                             <select id="country" class="w-full stripe-input" required>
-                                <option value="">
-                                    <span class="lang-pt">Selecione...</span>
-                                    <span class="lang-en hidden">Select...</span>
-                                </option>
-                                <option value="BR">
-                                    <span class="lang-pt">Brasil</span>
-                                    <span class="lang-en hidden">Brazil</span>
-                                </option>
-                                <option value="US">
-                                    <span class="lang-pt">Estados Unidos</span>
-                                    <span class="lang-en hidden">United States</span>
-                                </option>
-                                <option value="OTHER">
-                                    <span class="lang-pt">Outro</span>
-                                    <span class="lang-en hidden">Other</span>
-                                </option>
+                                <option value="" data-pt="Selecione..." data-en="Select...">Selecione...</option>
+                                <option value="BR" data-pt="Brasil" data-en="Brazil">Brasil</option>
+                                <option value="US" data-pt="Estados Unidos" data-en="United States">Estados Unidos</option>
+                                <option value="OTHER" data-pt="Outro" data-en="Other">Outro</option>
                             </select>
                         </div>
                     </div>
@@ -1387,6 +1369,10 @@ Keep your token secure..."></textarea>
             });
             document.querySelectorAll('.lang-en').forEach(el => {
                 el.classList.toggle('hidden', currentLang !== 'en');
+            });
+            // Translate select/dropdown options that have data-pt/data-en attributes
+            document.querySelectorAll('option[data-pt][data-en]').forEach(opt => {
+                opt.textContent = currentLang === 'pt' ? opt.getAttribute('data-pt') : opt.getAttribute('data-en');
             });
             document.getElementById('langToggle').innerHTML = currentLang === 'pt' ? '🇬🇧 English' : '🇧🇷 Português';
         }
