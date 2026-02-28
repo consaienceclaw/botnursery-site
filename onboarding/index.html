@@ -189,11 +189,7 @@
                 <span class="lang-pt">ℹ️ Como funciona a cobrança</span>
                 <span class="lang-en hidden">ℹ️ How billing works</span>
             </h3>
-            <p class="text-gray-700 mb-4">
-                <span class="lang-pt">O custo por paciente, cliente ou aluno se aplica apenas a pacientes, clientes ou alunos que interagem diretamente com o bot via chat. Pacientes que você atende mas não usam o bot não são cobrados.</span>
-                <span class="lang-en hidden">The per-patient, client or student cost applies only to patients, clients or students who interact directly with the bot via chat. Patients you see but don't use the bot are not charged.</span>
-            </p>
-            <button onclick="closePricingModal()" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 rounded-lg transition-all">
+<button onclick="closePricingModal()" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 rounded-lg transition-all">
                 <span class="lang-pt">Entendi!</span>
                 <span class="lang-en hidden">Got it!</span>
             </button>
@@ -256,17 +252,17 @@
                 <!-- Section 7 -->
                 <section>
                     <h3 class="text-lg font-bold text-gray-800 mb-2"><span class="text-blue-600">7.</span> <span class="lang-pt">Preços e Pagamento</span><span class="lang-en hidden">Pricing & Payment</span></h3>
-                    <ul class="list-disc pl-8 space-y-1 lang-pt"><li>Plano base a partir de R$149/mês (US$29) + custo por paciente/cliente/aluno ativo</li><li>7 dias de teste gratuito; cancele quando quiser (basta solicitar ao seu agente)</li><li>Preços futuros comunicados com 30 dias de antecedência</li><li>Sem reembolsos para meses parciais</li></ul>
-                    <ul class="list-disc pl-8 space-y-1 lang-en hidden"><li>Base plan from $29/month (R$149) + per active patient/client/student cost</li><li>7-day free trial; cancel anytime (just ask your agent)</li><li>Future pricing communicated 30 days in advance</li><li>No refunds for partial months</li></ul>
+                    <ul class="list-disc pl-8 space-y-1 lang-pt"><li>Planos a partir de R$249/mês (US$49)</li><li>7 dias de teste gratuito; cancele quando quiser (basta solicitar ao seu agente)</li><li>Preços futuros comunicados com 30 dias de antecedência</li><li>Sem reembolsos para meses parciais</li></ul>
+                    <ul class="list-disc pl-8 space-y-1 lang-en hidden"><li>Plans starting from $49/month (R$249)</li><li>7-day free trial; cancel anytime (just ask your agent)</li><li>Future pricing communicated 30 days in advance</li><li>No refunds for partial months</li></ul>
                 </section>
                 <!-- Section 7.1 - Fair Use -->
                 <section>
                     <h3 class="text-lg font-bold text-gray-800 mb-2"><span class="text-blue-600">7.1</span> <span class="lang-pt">Política de Uso Justo</span><span class="lang-en hidden">Fair Use Policy</span></h3>
                     <div class="pl-4 lang-pt">
-                        <p>O uso da plataforma está sujeito a limites de uso justo. O uso pelo profissional é limitado a 5.000.000 de tokens por mês, e o uso por paciente/cliente/aluno é limitado a 500.000 tokens por mês. Uso além destes limites pode resultar em redução temporária da velocidade do serviço ou cobrança adicional mediante aviso prévio. Estes limites são revisados periodicamente e podem ser ajustados com 30 dias de antecedência.</p>
+                        <p>O uso da plataforma está sujeito a limites de uso justo. O uso pelo profissional é limitado a 5.000.000 de tokens por mês. Uso além destes limites pode resultar em redução temporária da velocidade do serviço ou cobrança adicional mediante aviso prévio. Estes limites são revisados periodicamente e podem ser ajustados com 30 dias de antecedência.</p>
                     </div>
                     <div class="pl-4 lang-en hidden">
-                        <p>Platform usage is subject to fair use limits. Professional usage is limited to 5,000,000 tokens per month, and per-patient/client/student usage is limited to 500,000 tokens per month. Usage beyond these limits may result in temporary service speed reduction or additional charges upon prior notice. These limits are reviewed periodically and may be adjusted with 30 days notice.</p>
+                        <p>Platform usage is subject to fair use limits. Professional usage is limited to 5,000,000 tokens per month. Usage beyond these limits may result in temporary service speed reduction or additional charges upon prior notice. These limits are reviewed periodically and may be adjusted with 30 days notice.</p>
                     </div>
                 </section>
                 <!-- Section 8 -->
@@ -364,34 +360,40 @@
                     </div>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
                     <!-- Starter Plan -->
                     <div class="plan-card bg-white rounded-xl p-6 card-shadow relative" data-plan="starter">
                         <h3 class="text-2xl font-bold text-gray-800 mb-2">Starter</h3>
                         <div class="text-3xl font-bold text-purple-600 mb-1">
-                            <span class="lang-pt">R$149<span class="text-lg text-gray-500">/mês</span></span>
-                            <span class="lang-en hidden">$29<span class="text-lg text-gray-500">/mo</span></span>
+                            <span class="lang-pt">R$249<span class="text-lg text-gray-500">/mês</span></span>
+                            <span class="lang-en hidden">$49<span class="text-lg text-gray-500">/mo</span></span>
                         </div>
-                        <div class="text-gray-600 mb-4">
-                            <span class="lang-pt">+ R$25/paciente, cliente ou aluno ativo/mês</span>
-                            <span class="lang-en hidden">+ $5/active patient, client or student/mo</span>
-                            <span class="info-icon" onclick="openPricingModal()">ℹ️</span>
-                        </div>
-                        <div class="border-t pt-4 mb-4">
-                            <div class="text-sm text-gray-600 space-y-2">
-                                <div class="flex justify-between">
-                                    <span>5 <span class="lang-pt">pacientes, clientes ou alunos</span><span class="lang-en hidden">patients, clients or students</span>:</span>
-                                    <span class="font-semibold lang-pt">R$274/mês</span>
-                                    <span class="font-semibold lang-en hidden">$54/mo</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span>20 <span class="lang-pt">pacientes, clientes ou alunos</span><span class="lang-en hidden">patients, clients or students</span>:</span>
-                                    <span class="font-semibold lang-pt">R$649/mês</span>
-                                    <span class="font-semibold lang-en hidden">$129/mo</span>
-                                </div>
+
+                        
+                        <div class="text-sm text-gray-700 space-y-2 mb-4">
+                            <div class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span><span class="lang-pt">Agente de IA em 1 grupo</span><span class="lang-en hidden">AI agent in 1 group</span></span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span><span class="lang-pt">Treinamento básico</span><span class="lang-en hidden">Basic training</span></span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span><span class="lang-pt">Até 50 pacientes ativos</span><span class="lang-en hidden">Up to 50 active patients</span></span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span><span class="lang-pt">Telegram</span><span class="lang-en hidden">Telegram</span></span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span><span class="lang-pt">Suporte por email</span><span class="lang-en hidden">Email support</span></span>
                             </div>
                         </div>
-                        <div class="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
+                        
+<div class="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
                             <div class="text-green-800 text-sm font-medium">
                                 ✓ <span class="lang-pt">7 dias grátis</span><span class="lang-en hidden">7-day free trial</span>
                             </div>
@@ -406,53 +408,47 @@
                         </button>
                     </div>
 
-                    <!-- Founding Practitioner Plan -->
-                    <div class="plan-card bg-white rounded-xl p-6 card-shadow relative" data-plan="founding">
+                    <!-- Professional Plan (RECOMMENDED) -->
+                    <div class="plan-card bg-white rounded-xl p-6 card-shadow relative" data-plan="professional">
                         <div class="badge">
-                            <span class="lang-pt">🎉 FUNDADOR</span>
-                            <span class="lang-en hidden">🎉 FOUNDING</span>
+                            <span class="lang-pt">⭐ MAIS POPULAR</span>
+                            <span class="lang-en hidden">⭐ MOST POPULAR</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">
-                            <span class="lang-pt">Fundador</span>
-                            <span class="lang-en hidden">Founding Practitioner</span>
-                        </h3>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Professional</h3>
                         <div class="text-3xl font-bold text-purple-600 mb-1">
-                            <span class="lang-pt"><span class="line-through text-gray-400 text-xl">R$149</span> R$75<span class="text-lg text-gray-500">/mês</span></span>
-                            <span class="lang-en hidden"><span class="line-through text-gray-400 text-xl">$29</span> $15<span class="text-lg text-gray-500">/mo</span></span>
+                            <span class="lang-pt">R$1.499<span class="text-lg text-gray-500">/mês</span></span>
+                            <span class="lang-en hidden">$299<span class="text-lg text-gray-500">/mo</span></span>
                         </div>
-                        <div class="text-xs text-orange-600 font-semibold mb-3">
-                            <span class="lang-pt">50% OFF por 6 meses!</span>
-                            <span class="lang-en hidden">50% OFF for 6 months!</span>
-                        </div>
-                        <div class="text-gray-600 mb-4">
-                            <span class="lang-pt">+ R$12,50/paciente, cliente ou aluno ativo/mês</span>
-                            <span class="lang-en hidden">+ $2.50/active patient, client or student/mo</span>
-                            <span class="info-icon" onclick="openPricingModal()">ℹ️</span>
-                        </div>
-                        <div class="border-t pt-4 mb-4">
-                            <div class="text-sm text-gray-600 space-y-2">
-                                <div class="flex justify-between">
-                                    <span>5 <span class="lang-pt">pacientes, clientes ou alunos</span><span class="lang-en hidden">patients, clients or students</span>:</span>
-                                    <span class="font-semibold lang-pt">R$137,50/mês</span>
-                                    <span class="font-semibold lang-en hidden">$27.50/mo</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span>20 <span class="lang-pt">pacientes, clientes ou alunos</span><span class="lang-en hidden">patients, clients or students</span>:</span>
-                                    <span class="font-semibold lang-pt">R$325/mês</span>
-                                    <span class="font-semibold lang-en hidden">$65/mo</span>
-                                </div>
+
+                        
+                        <div class="text-sm text-gray-700 space-y-2 mb-4">
+                            <div class="flex items-start">
+                                <span class="text-purple-600 mr-2 font-bold">✓</span>
+                                <span><span class="lang-pt">Tudo do Starter, mais:</span><span class="lang-en hidden">Everything in Starter, plus:</span></span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span><span class="lang-pt">Acesso DM aos pacientes</span><span class="lang-en hidden">Patient DM access</span></span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span><span class="lang-pt">Treinamento prioritário</span><span class="lang-en hidden">Priority training</span></span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span><span class="lang-pt">Dashboard de analytics</span><span class="lang-en hidden">Analytics dashboard</span></span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span><span class="lang-pt">Até 200 pacientes</span><span class="lang-en hidden">Up to 200 patients</span></span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span><span class="lang-pt">Suporte prioritário</span><span class="lang-en hidden">Priority support</span></span>
                             </div>
                         </div>
                         
-                        <!-- Fundador explanation -->
-                        <div class="bg-orange-50 border border-orange-200 rounded-lg p-3 mb-4 text-xs text-gray-700">
-                            <p>
-                                <span class="lang-pt">🌱 <strong>Fundador</strong> = adotante inicial da nossa plataforma. Como agradecimento por acreditar no BotNursery desde o início, você recebe 50% de desconto nos primeiros 6 meses, acesso direto ao time fundador, e prioridade em novas funcionalidades.</span>
-                                <span class="lang-en hidden">🌱 <strong>Founder</strong> = early adopter of our platform. As thanks for believing in BotNursery from the start, you get 50% off for 6 months, direct access to the founding team, and priority on new features.</span>
-                            </p>
-                        </div>
-                        
-                        <div class="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
+<div class="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
                             <div class="text-green-800 text-sm font-medium">
                                 ✓ <span class="lang-pt">7 dias grátis</span><span class="lang-en hidden">7-day free trial</span>
                             </div>
@@ -461,9 +457,57 @@
                                 <span class="lang-en hidden">Cancel anytime</span>
                             </div>
                         </div>
-                        <button class="w-full gradient-bg text-white font-semibold py-3 rounded-lg hover:opacity-90 transition-all plan-select" data-plan="founding">
-                            <span class="lang-pt">Selecionar (Melhor Valor!)</span>
-                            <span class="lang-en hidden">Select (Best Value!)</span>
+                        <button class="w-full gradient-bg text-white font-semibold py-3 rounded-lg hover:opacity-90 transition-all plan-select" data-plan="professional">
+                            <span class="lang-pt">Selecionar</span>
+                            <span class="lang-en hidden">Select</span>
+                        </button>
+                    </div>
+
+                    <!-- Organization Plan -->
+                    <div class="plan-card bg-white rounded-xl p-6 card-shadow relative" data-plan="organization">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Organization</h3>
+                        <div class="text-3xl font-bold text-purple-600 mb-4">
+                            <span class="lang-pt">Sob consulta</span>
+                            <span class="lang-en hidden">Custom</span>
+                        </div>
+                        
+                        <div class="text-sm text-gray-700 space-y-2 mb-4">
+                            <div class="flex items-start">
+                                <span class="text-purple-600 mr-2 font-bold">✓</span>
+                                <span><span class="lang-pt">Tudo do Professional, mais:</span><span class="lang-en hidden">Everything in Professional, plus:</span></span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span><span class="lang-pt">Múltiplos profissionais</span><span class="lang-en hidden">Multiple professionals</span></span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span><span class="lang-pt">Integrações customizadas</span><span class="lang-en hidden">Custom integrations</span></span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span><span class="lang-pt">Opção white-label</span><span class="lang-en hidden">White-label option</span></span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span><span class="lang-pt">Gerente de conta dedicado</span><span class="lang-en hidden">Dedicated account manager</span></span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="text-green-600 mr-2">✓</span>
+                                <span><span class="lang-pt">Garantia de SLA</span><span class="lang-en hidden">SLA guarantee</span></span>
+                            </div>
+                        </div>
+                        
+                        <div class="border-t pt-3 mb-4">
+                            <p class="text-xs text-gray-600 text-center">
+                                <span class="lang-pt">Preços personalizados</span>
+                                <span class="lang-en hidden">Custom pricing</span>
+                            </p>
+                        </div>
+                        
+                        <button class="w-full gradient-bg text-white font-semibold py-3 rounded-lg hover:opacity-90 transition-all plan-select" data-plan="organization">
+                            <span class="lang-pt">Fale Conosco</span>
+                            <span class="lang-en hidden">Contact Us</span>
                         </button>
                     </div>
                 </div>
@@ -1129,7 +1173,6 @@ Keep your token secure..."></textarea>
                 <!-- Error State -->
                 <div id="errorState" class="hidden bg-red-50 border border-red-200 rounded-lg p-6 mt-8 max-w-3xl mx-auto">
                     <h3 class="text-red-800 font-semibold mb-2">
-
                         <span class="lang-pt">Ops! Algo deu errado.</span>
                         <span class="lang-en hidden">Oops! Something went wrong.</span>
                     </h3>
@@ -1469,6 +1512,16 @@ Keep your token secure..."></textarea>
                 const plan = e.target.dataset.plan || e.target.closest('.plan-select').dataset.plan;
                 formData.plan = plan;
                 
+                // Organization plan - show contact message
+                if (plan === 'organization') {
+                    const msg = currentLang === 'pt' 
+                        ? 'Para o plano Organization, entre em contato conosco em hello@botnursery.ai ou através do botão "Fale Conosco" no site. Personalizaremos a solução para sua organização.'
+                        : 'For the Organization plan, please contact us at hello@botnursery.ai or via the "Contact Us" button on the site. We will customize the solution for your organization.';
+                    alert(msg);
+                    window.dispatchEvent(new Event('open-chat'));
+                    return;
+                }
+                
                 // Visual feedback
                 document.querySelectorAll('.plan-card').forEach(card => {
                     card.classList.remove('selected');
@@ -1552,12 +1605,13 @@ Keep your token secure..."></textarea>
             const nameEl = document.getElementById('checkoutPlanName');
             const priceEl = document.getElementById('checkoutPlanPrice');
             const isBR = formData.country === 'BR' || currentLang === 'pt';
-            if (formData.plan === 'founding') {
-                nameEl.innerHTML = currentLang === 'pt' ? '🌟 Plano Fundador' : '🌟 Founding Practitioner';
-                priceEl.textContent = isBR ? 'R$149/mês + R$25 por paciente ativo' : '$29/mo + $5 per active patient';
-            } else {
-                nameEl.innerHTML = currentLang === 'pt' ? '🤖 Plano Inicial' : '🤖 Starter Plan';
-                priceEl.textContent = isBR ? 'R$149/mês + R$25 por paciente ativo' : '$29/mo + $5 per active patient';
+            
+            if (formData.plan === 'starter') {
+                nameEl.innerHTML = currentLang === 'pt' ? '🤖 Plano Starter' : '🤖 Starter Plan';
+                priceEl.textContent = isBR ? 'R$249/mês' : '$49/mo';
+            } else if (formData.plan === 'professional') {
+                nameEl.innerHTML = currentLang === 'pt' ? '⭐ Plano Professional' : '⭐ Professional Plan';
+                priceEl.textContent = isBR ? 'R$1.499/mês' : '$299/mo';
             }
         }
 
@@ -1584,7 +1638,7 @@ Keep your token secure..."></textarea>
                         botUsername: formData.botUsername,
                         botName: formData.botName,
                         lang: currentLang,
-                        agreementVersion: '2026-02-20-v1',
+                        agreementVersion: '2026-02-28-v2',
                         agreementSignedAt: formData.timestamp || new Date().toISOString(),
                     })
                 });
@@ -1803,7 +1857,7 @@ Keep your token secure..."></textarea>
                         botUsername: formData.botUsername,
                         botName: formData.botName,
                         agreementSigned: true,
-                        agreementVersion: '2026-02-20-v1',
+                        agreementVersion: '2026-02-28-v2',
                         agreementText: agreementText,
                         agreementSignedAt: formData.timestamp,
                         agreementLanguage: currentLang,
@@ -1828,7 +1882,7 @@ Keep your token secure..."></textarea>
                         botUsername: formData.botUsername,
                         botName: formData.botName,
                         lang: currentLang,
-                        agreementVersion: '2026-02-20-v1',
+                        agreementVersion: '2026-02-28-v2',
                         agreementSignedAt: formData.timestamp,
                     })
                 });
