@@ -73,6 +73,22 @@
             box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
         }
         
+        .channel-card {
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 3px solid transparent;
+        }
+        
+        .channel-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .channel-card.selected {
+            border: 3px solid #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+        }
+        
         .badge {
             position: absolute;
             top: -12px;
@@ -172,12 +188,12 @@
                     <span class="font-bold text-lg text-gray-800">BotNursery</span>
                 </div>
                 <div class="text-sm text-gray-600" id="progressText">
-                    <span class="lang-pt">Passo 1 de 6</span>
-                    <span class="lang-en hidden">Step 1 of 6</span>
+                    <span class="lang-pt">Passo 1 de 5</span>
+                    <span class="lang-en hidden">Step 1 of 5</span>
                 </div>
             </div>
             <div class="w-full bg-gray-200 rounded-full h-2">
-                <div id="progressBar" class="gradient-bg h-2 rounded-full transition-all duration-500" style="width: 14.28%"></div>
+                <div id="progressBar" class="gradient-bg h-2 rounded-full transition-all duration-500" style="width: 20%"></div>
             </div>
         </div>
     </div>
@@ -189,7 +205,11 @@
                 <span class="lang-pt">ℹ️ Como funciona a cobrança</span>
                 <span class="lang-en hidden">ℹ️ How billing works</span>
             </h3>
-<button onclick="closePricingModal()" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 rounded-lg transition-all">
+            <p class="text-gray-700 mb-4">
+                <span class="lang-pt">O custo por paciente, cliente ou aluno se aplica apenas a pacientes, clientes ou alunos que interagem diretamente com o bot via chat. Pacientes que você atende mas não usam o bot não são cobrados.</span>
+                <span class="lang-en hidden">The per-patient, client or student cost applies only to patients, clients or students who interact directly with the bot via chat. Patients you see but don't use the bot are not charged.</span>
+            </p>
+            <button onclick="closePricingModal()" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 rounded-lg transition-all">
                 <span class="lang-pt">Entendi!</span>
                 <span class="lang-en hidden">Got it!</span>
             </button>
@@ -252,17 +272,17 @@
                 <!-- Section 7 -->
                 <section>
                     <h3 class="text-lg font-bold text-gray-800 mb-2"><span class="text-blue-600">7.</span> <span class="lang-pt">Preços e Pagamento</span><span class="lang-en hidden">Pricing & Payment</span></h3>
-                    <ul class="list-disc pl-8 space-y-1 lang-pt"><li>Planos a partir de R$249/mês (US$49)</li><li>7 dias de teste gratuito; cancele quando quiser (basta solicitar ao seu agente)</li><li>Preços futuros comunicados com 30 dias de antecedência</li><li>Sem reembolsos para meses parciais</li></ul>
-                    <ul class="list-disc pl-8 space-y-1 lang-en hidden"><li>Plans starting from $49/month (R$249)</li><li>7-day free trial; cancel anytime (just ask your agent)</li><li>Future pricing communicated 30 days in advance</li><li>No refunds for partial months</li></ul>
+                    <ul class="list-disc pl-8 space-y-1 lang-pt"><li>Plano base a partir de R$149/mês (US$29) + custo por paciente/cliente/aluno ativo</li><li>7 dias de teste gratuito; cancele quando quiser (basta solicitar ao seu agente)</li><li>Preços futuros comunicados com 30 dias de antecedência</li><li>Sem reembolsos para meses parciais</li></ul>
+                    <ul class="list-disc pl-8 space-y-1 lang-en hidden"><li>Base plan from $29/month (R$149) + per active patient/client/student cost</li><li>7-day free trial; cancel anytime (just ask your agent)</li><li>Future pricing communicated 30 days in advance</li><li>No refunds for partial months</li></ul>
                 </section>
                 <!-- Section 7.1 - Fair Use -->
                 <section>
                     <h3 class="text-lg font-bold text-gray-800 mb-2"><span class="text-blue-600">7.1</span> <span class="lang-pt">Política de Uso Justo</span><span class="lang-en hidden">Fair Use Policy</span></h3>
                     <div class="pl-4 lang-pt">
-                        <p>O uso da plataforma está sujeito a limites de uso justo. O uso pelo profissional é limitado a 5.000.000 de tokens por mês. Uso além destes limites pode resultar em redução temporária da velocidade do serviço ou cobrança adicional mediante aviso prévio. Estes limites são revisados periodicamente e podem ser ajustados com 30 dias de antecedência.</p>
+                        <p>O uso da plataforma está sujeito a limites de uso justo. O uso pelo profissional é limitado a 5.000.000 de tokens por mês, e o uso por paciente/cliente/aluno é limitado a 500.000 tokens por mês. Uso além destes limites pode resultar em redução temporária da velocidade do serviço ou cobrança adicional mediante aviso prévio. Estes limites são revisados periodicamente e podem ser ajustados com 30 dias de antecedência.</p>
                     </div>
                     <div class="pl-4 lang-en hidden">
-                        <p>Platform usage is subject to fair use limits. Professional usage is limited to 5,000,000 tokens per month. Usage beyond these limits may result in temporary service speed reduction or additional charges upon prior notice. These limits are reviewed periodically and may be adjusted with 30 days notice.</p>
+                        <p>Platform usage is subject to fair use limits. Professional usage is limited to 5,000,000 tokens per month, and per-patient/client/student usage is limited to 500,000 tokens per month. Usage beyond these limits may result in temporary service speed reduction or additional charges upon prior notice. These limits are reviewed periodically and may be adjusted with 30 days notice.</p>
                     </div>
                 </section>
                 <!-- Section 8 -->
@@ -360,44 +380,34 @@
                     </div>
                 </div>
 
-                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
                     <!-- Starter Plan -->
                     <div class="plan-card bg-white rounded-xl p-6 card-shadow relative" data-plan="starter">
                         <h3 class="text-2xl font-bold text-gray-800 mb-2">Starter</h3>
                         <div class="text-3xl font-bold text-purple-600 mb-1">
-                            <span class="lang-pt">R$249<span class="text-lg text-gray-500">/mês</span></span>
-                            <span class="lang-en hidden">$49<span class="text-lg text-gray-500">/mo</span></span>
+                            <span class="lang-pt">R$149<span class="text-lg text-gray-500">/mês</span></span>
+                            <span class="lang-en hidden">$29<span class="text-lg text-gray-500">/mo</span></span>
                         </div>
-
-                        
-                        <div class="text-sm text-gray-700 space-y-2 mb-4">
-                            <div class="flex items-start">
-                                <span class="text-green-600 mr-2">✓</span>
-                                <span><span class="lang-pt">Agente de IA avançado (Anthropic Sonnet)</span><span class="lang-en hidden">AI agent powered by advanced AI (Anthropic Sonnet)</span></span>
-                            </div>
-                            <div class="flex items-start">
-                                <span class="text-green-600 mr-2">✓</span>
-                                <span><span class="lang-pt">Assistente pessoal do profissional</span><span class="lang-en hidden">Personal assistant for the professional</span></span>
-                            </div>
-                            <div class="flex items-start">
-                                <span class="text-green-600 mr-2">✓</span>
-                                <span><span class="lang-pt">Treinamento de personalidade e conhecimento</span><span class="lang-en hidden">Personality and knowledge training</span></span>
-                            </div>
-                            <div class="flex items-start">
-                                <span class="text-green-600 mr-2">✓</span>
-                                <span><span class="lang-pt">Implantação no Telegram</span><span class="lang-en hidden">Telegram deployment</span></span>
-                            </div>
-                            <div class="flex items-start">
-                                <span class="text-green-600 mr-2">✓</span>
-                                <span><span class="lang-pt">Suporte por email</span><span class="lang-en hidden">Email support</span></span>
-                            </div>
-                            <div class="flex items-start">
-                                <span class="text-red-600 mr-2">✗</span>
-                                <span><span class="lang-pt">Sem comunicação direta com pacientes/clientes</span><span class="lang-en hidden">NO patient/client direct communication</span></span>
+                        <div class="text-gray-600 mb-4">
+                            <span class="lang-pt">+ R$25/paciente, cliente ou aluno ativo/mês</span>
+                            <span class="lang-en hidden">+ $5/active patient, client or student/mo</span>
+                            <span class="info-icon" onclick="openPricingModal()">ℹ️</span>
+                        </div>
+                        <div class="border-t pt-4 mb-4">
+                            <div class="text-sm text-gray-600 space-y-2">
+                                <div class="flex justify-between">
+                                    <span>5 <span class="lang-pt">pacientes, clientes ou alunos</span><span class="lang-en hidden">patients, clients or students</span>:</span>
+                                    <span class="font-semibold lang-pt">R$274/mês</span>
+                                    <span class="font-semibold lang-en hidden">$54/mo</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>20 <span class="lang-pt">pacientes, clientes ou alunos</span><span class="lang-en hidden">patients, clients or students</span>:</span>
+                                    <span class="font-semibold lang-pt">R$649/mês</span>
+                                    <span class="font-semibold lang-en hidden">$129/mo</span>
+                                </div>
                             </div>
                         </div>
-                        
-<div class="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
+                        <div class="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
                             <div class="text-green-800 text-sm font-medium">
                                 ✓ <span class="lang-pt">7 dias grátis</span><span class="lang-en hidden">7-day free trial</span>
                             </div>
@@ -412,51 +422,53 @@
                         </button>
                     </div>
 
-                    <!-- Professional Plan (RECOMMENDED) -->
-                    <div class="plan-card bg-white rounded-xl p-6 card-shadow relative" data-plan="professional">
+                    <!-- Founding Practitioner Plan -->
+                    <div class="plan-card bg-white rounded-xl p-6 card-shadow relative" data-plan="founding">
                         <div class="badge">
-                            <span class="lang-pt">⭐ MAIS POPULAR</span>
-                            <span class="lang-en hidden">⭐ MOST POPULAR</span>
+                            <span class="lang-pt">🎉 FUNDADOR</span>
+                            <span class="lang-en hidden">🎉 FOUNDING</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Professional</h3>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                            <span class="lang-pt">Fundador</span>
+                            <span class="lang-en hidden">Founding Practitioner</span>
+                        </h3>
                         <div class="text-3xl font-bold text-purple-600 mb-1">
-                            <span class="lang-pt">R$1.499<span class="text-lg text-gray-500">/mês</span></span>
-                            <span class="lang-en hidden">$299<span class="text-lg text-gray-500">/mo</span></span>
+                            <span class="lang-pt"><span class="line-through text-gray-400 text-xl">R$149</span> R$75<span class="text-lg text-gray-500">/mês</span></span>
+                            <span class="lang-en hidden"><span class="line-through text-gray-400 text-xl">$29</span> $15<span class="text-lg text-gray-500">/mo</span></span>
                         </div>
-
-                        
-                        <div class="text-sm text-gray-700 space-y-2 mb-4">
-                            <div class="flex items-start">
-                                <span class="text-green-600 mr-2">✓</span>
-                                <span><span class="lang-pt">Agente de IA premium (Anthropic Opus) — melhor raciocínio e empatia</span><span class="lang-en hidden">AI agent powered by premium AI (Anthropic Opus) — best reasoning and empathy</span></span>
-                            </div>
-                            <div class="flex items-start">
-                                <span class="text-green-600 mr-2">✓</span>
-                                <span><span class="lang-pt">Fallback para IA avançada após limite mensal</span><span class="lang-en hidden">Falls back to advanced AI (Anthropic Sonnet) after monthly limit</span></span>
-                            </div>
-                            <div class="flex items-start">
-                                <span class="text-purple-600 mr-2 font-bold">✓</span>
-                                <span><span class="lang-pt">Tudo do Starter, mais:</span><span class="lang-en hidden">Everything in Starter, plus:</span></span>
-                            </div>
-                            <div class="flex items-start">
-                                <span class="text-green-600 mr-2">✓</span>
-                                <span><span class="lang-pt">Comunicação direta com pacientes/clientes/alunos</span><span class="lang-en hidden">Direct communication with patients/clients/students via bot</span></span>
-                            </div>
-                            <div class="flex items-start">
-                                <span class="text-green-600 mr-2">✓</span>
-                                <span><span class="lang-pt">Treinamento prioritário e onboarding personalizado</span><span class="lang-en hidden">Priority training and hands-on onboarding</span></span>
-                            </div>
-                            <div class="flex items-start">
-                                <span class="text-green-600 mr-2">✓</span>
-                                <span><span class="lang-pt">Painel analítico com insights</span><span class="lang-en hidden">Analytics dashboard with insights</span></span>
-                            </div>
-                            <div class="flex items-start">
-                                <span class="text-green-600 mr-2">✓</span>
-                                <span><span class="lang-pt">Suporte prioritário</span><span class="lang-en hidden">Priority support</span></span>
+                        <div class="text-xs text-orange-600 font-semibold mb-3">
+                            <span class="lang-pt">50% OFF por 6 meses!</span>
+                            <span class="lang-en hidden">50% OFF for 6 months!</span>
+                        </div>
+                        <div class="text-gray-600 mb-4">
+                            <span class="lang-pt">+ R$12,50/paciente, cliente ou aluno ativo/mês</span>
+                            <span class="lang-en hidden">+ $2.50/active patient, client or student/mo</span>
+                            <span class="info-icon" onclick="openPricingModal()">ℹ️</span>
+                        </div>
+                        <div class="border-t pt-4 mb-4">
+                            <div class="text-sm text-gray-600 space-y-2">
+                                <div class="flex justify-between">
+                                    <span>5 <span class="lang-pt">pacientes, clientes ou alunos</span><span class="lang-en hidden">patients, clients or students</span>:</span>
+                                    <span class="font-semibold lang-pt">R$137,50/mês</span>
+                                    <span class="font-semibold lang-en hidden">$27.50/mo</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>20 <span class="lang-pt">pacientes, clientes ou alunos</span><span class="lang-en hidden">patients, clients or students</span>:</span>
+                                    <span class="font-semibold lang-pt">R$325/mês</span>
+                                    <span class="font-semibold lang-en hidden">$65/mo</span>
+                                </div>
                             </div>
                         </div>
                         
-<div class="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
+                        <!-- Fundador explanation -->
+                        <div class="bg-orange-50 border border-orange-200 rounded-lg p-3 mb-4 text-xs text-gray-700">
+                            <p>
+                                <span class="lang-pt">🌱 <strong>Fundador</strong> = adotante inicial da nossa plataforma. Como agradecimento por acreditar no BotNursery desde o início, você recebe 50% de desconto nos primeiros 6 meses, acesso direto ao time fundador, e prioridade em novas funcionalidades.</span>
+                                <span class="lang-en hidden">🌱 <strong>Founder</strong> = early adopter of our platform. As thanks for believing in BotNursery from the start, you get 50% off for 6 months, direct access to the founding team, and priority on new features.</span>
+                            </p>
+                        </div>
+                        
+                        <div class="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
                             <div class="text-green-800 text-sm font-medium">
                                 ✓ <span class="lang-pt">7 dias grátis</span><span class="lang-en hidden">7-day free trial</span>
                             </div>
@@ -465,61 +477,9 @@
                                 <span class="lang-en hidden">Cancel anytime</span>
                             </div>
                         </div>
-                        <button class="w-full gradient-bg text-white font-semibold py-3 rounded-lg hover:opacity-90 transition-all plan-select" data-plan="professional">
-                            <span class="lang-pt">Selecionar</span>
-                            <span class="lang-en hidden">Select</span>
-                        </button>
-                    </div>
-
-                    <!-- Organization Plan -->
-                    <div class="plan-card bg-white rounded-xl p-6 card-shadow relative" data-plan="organization">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Organization</h3>
-                        <div class="text-3xl font-bold text-purple-600 mb-4">
-                            <span class="lang-pt">Sob consulta</span>
-                            <span class="lang-en hidden">Custom</span>
-                        </div>
-                        
-                        <div class="text-sm text-gray-700 space-y-2 mb-4">
-                            <div class="flex items-start">
-                                <span class="text-purple-600 mr-2 font-bold">✓</span>
-                                <span><span class="lang-pt">Tudo do Professional, mais:</span><span class="lang-en hidden">Everything in Professional, plus:</span></span>
-                            </div>
-                            <div class="flex items-start">
-                                <span class="text-green-600 mr-2">✓</span>
-                                <span><span class="lang-pt">Múltiplos profissionais</span><span class="lang-en hidden">Multiple professionals</span></span>
-                            </div>
-                            <div class="flex items-start">
-                                <span class="text-green-600 mr-2">✓</span>
-                                <span><span class="lang-pt">Integrações customizadas (prontuário, agendamento)</span><span class="lang-en hidden">Custom integrations (EHR, scheduling)</span></span>
-                            </div>
-                            <div class="flex items-start">
-                                <span class="text-green-600 mr-2">✓</span>
-                                <span><span class="lang-pt">Opção white-label</span><span class="lang-en hidden">White-label option</span></span>
-                            </div>
-                            <div class="flex items-start">
-                                <span class="text-green-600 mr-2">✓</span>
-                                <span><span class="lang-pt">Gerente de conta dedicado</span><span class="lang-en hidden">Dedicated account manager</span></span>
-                            </div>
-                            <div class="flex items-start">
-                                <span class="text-green-600 mr-2">✓</span>
-                                <span><span class="lang-pt">Garantia de SLA</span><span class="lang-en hidden">SLA guarantee</span></span>
-                            </div>
-                            <div class="flex items-start">
-                                <span class="text-green-600 mr-2">✓</span>
-                                <span><span class="lang-pt">Uso ilimitado de IA premium (Anthropic Opus)</span><span class="lang-en hidden">Unlimited Anthropic Opus usage</span></span>
-                            </div>
-                        </div>
-                        
-                        <div class="border-t pt-3 mb-4">
-                            <p class="text-xs text-gray-600 text-center">
-                                <span class="lang-pt">Preços personalizados</span>
-                                <span class="lang-en hidden">Custom pricing</span>
-                            </p>
-                        </div>
-                        
-                        <button class="w-full gradient-bg text-white font-semibold py-3 rounded-lg hover:opacity-90 transition-all plan-select" data-plan="organization">
-                            <span class="lang-pt">Fale Conosco</span>
-                            <span class="lang-en hidden">Contact Us</span>
+                        <button class="w-full gradient-bg text-white font-semibold py-3 rounded-lg hover:opacity-90 transition-all plan-select" data-plan="founding">
+                            <span class="lang-pt">Selecionar (Melhor Valor!)</span>
+                            <span class="lang-en hidden">Select (Best Value!)</span>
                         </button>
                     </div>
                 </div>
@@ -618,6 +578,21 @@
 
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <span class="lang-pt">WhatsApp</span>
+                                <span class="lang-en hidden">WhatsApp</span>
+                                <span class="text-gray-500 text-xs">
+                                    (<span class="lang-pt">opcional, recomendado</span><span class="lang-en hidden">optional, recommended</span>)
+                                </span>
+                            </label>
+                            <input type="tel" id="whatsapp" class="w-full stripe-input" placeholder="+55 11 99999-9999">
+                            <p class="text-xs text-gray-500 mt-1">
+                                <span class="lang-pt">💡 Se fornecido, a BotMother pode entrar em contato via WhatsApp!</span>
+                                <span class="lang-en hidden">💡 If provided, BotMother can contact you via WhatsApp!</span>
+                            </p>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
                                 <span class="lang-pt">País</span>
                                 <span class="lang-en hidden">Country</span>
                                 <span class="text-red-500">*</span>
@@ -644,114 +619,124 @@
                 </div>
             </div>
 
-            <!-- Step 3: Payment — Stripe Checkout redirect -->
+            <!-- Step 3: Choose Your Channel -->
             <div id="step3" class="step-content hidden">
                 <div class="text-center mb-8">
                     <h1 class="text-4xl font-bold text-gray-800 mb-3">
-                        <span class="lang-pt">Pagamento Seguro</span>
-                        <span class="lang-en hidden">Secure Payment</span>
-                    </h1>
-                    <p class="text-xl text-green-600 font-semibold">
-                        <span class="lang-pt">✨ Seu trial de 7 dias é gratuito!</span>
-                        <span class="lang-en hidden">✨ Your 7-day trial is free!</span>
-                    </p>
-                    <p class="text-sm text-gray-600 mt-2">
-                        <span class="lang-pt">Cobrança inicia apenas após o período de teste</span>
-                        <span class="lang-en hidden">Billing starts only after trial period</span>
-                    </p>
-                </div>
-
-                <div class="bg-white rounded-xl p-8 card-shadow max-w-2xl mx-auto">
-                    <!-- Plan summary -->
-                    <div class="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-6">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <div class="font-semibold text-gray-800" id="checkoutPlanName">
-                                    <span class="lang-pt">Plano Selecionado</span>
-                                    <span class="lang-en hidden">Selected Plan</span>
-                                </div>
-                                <div class="text-sm text-gray-600 mt-1" id="checkoutPlanPrice"></div>
-                            </div>
-                            <span class="text-3xl">🤖</span>
-                        </div>
-                    </div>
-
-                    <div class="space-y-4 mb-6">
-                        <div class="flex items-center text-sm text-gray-700">
-                            <span class="text-green-500 mr-2">✓</span>
-                            <span class="lang-pt">7 dias grátis — cancele quando quiser</span>
-                            <span class="lang-en hidden">7 days free — cancel anytime</span>
-                        </div>
-                        <div class="flex items-center text-sm text-gray-700">
-                            <span class="text-green-500 mr-2">✓</span>
-                            <span class="lang-pt">Pagamento seguro via <strong>Stripe</strong></span>
-                            <span class="lang-en hidden">Secure payment via <strong>Stripe</strong></span>
-                        </div>
-                        <div class="flex items-center text-sm text-gray-700">
-                            <span class="text-green-500 mr-2">✓</span>
-                            <span class="lang-pt">Nós nunca vemos seus dados de cartão</span>
-                            <span class="lang-en hidden">We never see your card details</span>
-                        </div>
-                        <div class="flex items-center text-sm text-gray-700">
-                            <span class="text-green-500 mr-2">✓</span>
-                            <span class="lang-pt">Código promocional? Use na próxima tela</span>
-                            <span class="lang-en hidden">Promo code? Use it on the next screen</span>
-                        </div>
-                    </div>
-
-                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                        <div class="flex items-start space-x-2 text-blue-800 text-sm">
-                            <span class="mt-0.5">🔒</span>
-                            <div>
-                                <div class="font-semibold">
-                                    <span class="lang-pt">Como funciona</span>
-                                    <span class="lang-en hidden">How it works</span>
-                                </div>
-                                <div class="text-xs mt-1">
-                                    <span class="lang-pt">Você será redirecionado para o <strong>Stripe</strong> (nosso processador de pagamentos) para inserir seus dados de cartão de forma segura. Após confirmar, voltará automaticamente para completar seu cadastro.</span>
-                                    <span class="lang-en hidden">You'll be redirected to <strong>Stripe</strong> (our payment processor) to securely enter your card details. After confirming, you'll return automatically to complete your setup.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex justify-between mt-8 max-w-2xl mx-auto">
-                    <button class="step-back text-gray-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all">
-                        <span class="lang-pt">← Voltar</span>
-                        <span class="lang-en hidden">← Back</span>
-                    </button>
-                    <button id="step3Next" class="gradient-bg text-white px-12 py-4 rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transition-all">
-                        <span class="lang-pt">💳 Ir para Pagamento →</span>
-                        <span class="lang-en hidden">💳 Proceed to Payment →</span>
-                    </button>
-                </div>
-                <!-- Loading state for checkout redirect -->
-                <div id="checkoutLoading" class="hidden text-center mt-6">
-                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-purple-500 border-t-transparent"></div>
-                    <p class="mt-2 text-gray-600">
-                        <span class="lang-pt">Redirecionando para o Stripe...</span>
-                        <span class="lang-en hidden">Redirecting to Stripe...</span>
-                    </p>
-                </div>
-            </div>
-
-            <!-- Step 4: Set Up Telegram -->
-            <div id="step4" class="step-content hidden">
-                <div class="text-center mb-8">
-                    <h1 class="text-4xl font-bold text-gray-800 mb-3">
-                        <span class="lang-pt">Configurar Telegram</span>
-                        <span class="lang-en hidden">Set Up Telegram</span>
+                        <span class="lang-pt">Escolha seu Canal</span>
+                        <span class="lang-en hidden">Choose Your Channel</span>
                     </h1>
                     <p class="text-xl text-gray-600">
-                        <span class="lang-pt">É por onde seu agente vai se comunicar! 💬</span>
-                        <span class="lang-en hidden">This is where your agent will live! 💬</span>
+                        <span class="lang-pt">Como você quer conversar com a BotMother?</span>
+                        <span class="lang-en hidden">How do you want to talk to BotMother?</span>
                     </p>
                 </div>
 
-                <div class="bg-white rounded-xl p-8 card-shadow max-w-2xl mx-auto">
-                    <!-- Sub-step 4a: Do you have Telegram? -->
-                    <div id="step4a">
+                <div class="grid md:grid-cols-2 gap-6 mb-8 max-w-4xl mx-auto">
+                    <!-- WhatsApp Card (Recommended) -->
+                    <div class="channel-card bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-8 card-shadow relative border-green-300" data-channel="whatsapp">
+                        <div class="badge" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                            <span class="lang-pt">✨ RECOMENDADO</span>
+                            <span class="lang-en hidden">✨ RECOMMENDED</span>
+                        </div>
+                        <div class="text-center mb-6">
+                            <div class="text-6xl mb-4">💬</div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">WhatsApp</h3>
+                            <p class="text-gray-600 text-sm">
+                                <span class="lang-pt">Sem instalação, sem configuração</span>
+                                <span class="lang-en hidden">No installation, no setup</span>
+                            </p>
+                        </div>
+
+                        <div class="bg-white rounded-lg p-4 mb-6">
+                            <p class="text-sm text-gray-700 mb-4">
+                                <span class="lang-pt">Converse com a BotMother pelo WhatsApp. É só fornecer seu número e ela vai te chamar!</span>
+                                <span class="lang-en hidden">Chat with BotMother on WhatsApp. Just provide your number and she'll contact you!</span>
+                            </p>
+                            <div class="space-y-2 text-xs text-gray-600">
+                                <div class="flex items-start">
+                                    <span class="text-green-600 mr-2">✓</span>
+                                    <span class="lang-pt">Você já tem instalado</span>
+                                    <span class="lang-en hidden">You already have it</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="text-green-600 mr-2">✓</span>
+                                    <span class="lang-pt">Sem criar conta nova</span>
+                                    <span class="lang-en hidden">No new account needed</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="text-green-600 mr-2">✓</span>
+                                    <span class="lang-pt">BotMother te adiciona automaticamente</span>
+                                    <span class="lang-en hidden">BotMother adds you automatically</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="whatsappNumberInput" class="hidden mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                <span class="lang-pt">Seu número do WhatsApp</span>
+                                <span class="lang-en hidden">Your WhatsApp number</span>
+                                <span class="text-red-500">*</span>
+                            </label>
+                            <input type="tel" id="whatsappNumber" class="w-full stripe-input" placeholder="+55 11 99999-9999">
+                            <p class="text-xs text-gray-500 mt-1">
+                                <span class="lang-pt">Incluir código do país (ex: +55 para Brasil)</span>
+                                <span class="lang-en hidden">Include country code (e.g., +55 for Brazil)</span>
+                            </p>
+                        </div>
+
+                        <button class="w-full gradient-bg text-white font-semibold py-3 rounded-lg hover:opacity-90 transition-all channel-select" data-channel="whatsapp">
+                            <span class="lang-pt">Escolher WhatsApp</span>
+                            <span class="lang-en hidden">Choose WhatsApp</span>
+                        </button>
+                    </div>
+
+                    <!-- Telegram Card -->
+                    <div class="channel-card bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-8 card-shadow relative border-blue-300" data-channel="telegram">
+                        <div class="text-center mb-6">
+                            <div class="text-6xl mb-4">✈️</div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Telegram</h3>
+                            <p class="text-gray-600 text-sm">
+                                <span class="lang-pt">Prefere Telegram? Sem problema.</span>
+                                <span class="lang-en hidden">Prefer Telegram? No problem.</span>
+                            </p>
+                        </div>
+
+                        <div class="bg-white rounded-lg p-4 mb-6">
+                            <p class="text-sm text-gray-700 mb-4">
+                                <span class="lang-pt">Vamos configurar seu Telegram ID para que a BotMother possa te encontrar.</span>
+                                <span class="lang-en hidden">We'll set up your Telegram ID so BotMother can find you.</span>
+                            </p>
+                            <div class="space-y-2 text-xs text-gray-600">
+                                <div class="flex items-start">
+                                    <span class="text-blue-600 mr-2">✓</span>
+                                    <span class="lang-pt">Privado e seguro</span>
+                                    <span class="lang-en hidden">Private and secure</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="text-blue-600 mr-2">✓</span>
+                                    <span class="lang-pt">Criptografia de ponta a ponta</span>
+                                    <span class="lang-en hidden">End-to-end encryption</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="text-blue-600 mr-2">✓</span>
+                                    <span class="lang-pt">BotMother cuida de tudo</span>
+                                    <span class="lang-en hidden">BotMother handles everything</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition-all channel-select" data-channel="telegram">
+                            <span class="lang-pt">Escolher Telegram</span>
+                            <span class="lang-en hidden">Choose Telegram</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Telegram setup (shown when Telegram is selected) -->
+                <div id="telegramSetup" class="hidden max-w-2xl mx-auto bg-white rounded-xl p-8 card-shadow mb-8">
+                    <!-- Sub-step: Do you have Telegram? -->
+                    <div id="telegramQuestion">
                         <h3 class="text-xl font-semibold text-gray-800 mb-4">
                             <span class="lang-pt">Você tem Telegram?</span>
                             <span class="lang-en hidden">Do you have Telegram?</span>
@@ -794,8 +779,8 @@
                         </button>
                     </div>
 
-                    <!-- Sub-step 4b: Get Telegram ID -->
-                    <div id="step4b" class="hidden">
+                    <!-- Get Telegram ID -->
+                    <div id="telegramIdInput" class="hidden">
                         <h3 class="text-xl font-semibold text-gray-800 mb-4">
                             <span class="lang-pt">Descubra seu Telegram ID</span>
                             <span class="lang-en hidden">Find your Telegram ID</span>
@@ -823,13 +808,6 @@
                                     <span class="lang-en hidden">It will reply with your ID</span>
                                 </li>
                             </ol>
-                        </div>
-                        <div class="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-4 text-center">
-                            <div class="text-4xl mb-2">📸</div>
-                            <p class="text-xs text-gray-500">
-                                <span class="lang-pt">[Espaço para screenshot ilustrativa]</span>
-                                <span class="lang-en hidden">[Illustrative screenshot placeholder]</span>
-                            </p>
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">
@@ -860,221 +838,20 @@
                     </div>
                 </div>
 
-                <div class="flex justify-between mt-8 max-w-2xl mx-auto">
+                <div class="flex justify-between mt-8 max-w-4xl mx-auto">
                     <button class="step-back text-gray-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all">
                         <span class="lang-pt">← Voltar</span>
                         <span class="lang-en hidden">← Back</span>
                     </button>
-                    <button id="step4Next" class="gradient-bg text-white px-12 py-4 rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transition-all hidden">
+                    <button id="step3Next" class="gradient-bg text-white px-12 py-4 rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transition-all hidden">
                         <span class="lang-pt">Próximo →</span>
                         <span class="lang-en hidden">Next →</span>
                     </button>
                 </div>
             </div>
 
-            <!-- Step 5: Create Your Bot -->
-            <div id="step5" class="step-content hidden">
-                <div class="text-center mb-8">
-                    <h1 class="text-4xl font-bold text-gray-800 mb-3">
-                        <span class="lang-pt">Hora de criar seu bot! 🤖</span>
-                        <span class="lang-en hidden">Time to create your bot! 🤖</span>
-                    </h1>
-                    <p class="text-xl text-gray-600">
-                        <span class="lang-pt">Siga os passos abaixo no Telegram</span>
-                        <span class="lang-en hidden">Follow the steps below in Telegram</span>
-                    </p>
-                </div>
-
-                <!-- Bot explanation callout -->
-                <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6 max-w-3xl mx-auto">
-                    <div class="flex items-start">
-                        <div class="text-2xl mr-3">ℹ️</div>
-                        <div>
-                            <p class="text-sm text-gray-700">
-                                <span class="lang-pt">O bot que você vai criar no Telegram é apenas a interface — como uma porta de entrada. O verdadeiro cérebro do seu agente vive na BotNursery, onde ele vai crescer, aprender e evoluir com você. Pense no bot como o rosto, e a BotNursery como a mente.</span>
-                                <span class="lang-en hidden">The bot you'll create on Telegram is just the interface — like a front door. Your agent's real brain lives in BotNursery, where it will grow, learn, and evolve with you. Think of the bot as the face, and BotNursery as the mind.</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-xl p-8 card-shadow max-w-3xl mx-auto">
-                    <div class="grid md:grid-cols-2 gap-6 mb-6">
-                        <div>
-                            <h3 class="text-lg font-semibold text-gray-800 mb-4">
-                                <span class="lang-pt">Passo a passo:</span>
-                                <span class="lang-en hidden">Step by step:</span>
-                            </h3>
-                            <div class="space-y-4">
-                                <div class="bg-gray-50 rounded-lg p-4">
-                                    <div class="flex items-start">
-                                        <div class="bg-purple-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 flex-shrink-0">1</div>
-                                        <p class="text-sm text-gray-700">
-                                            <span class="lang-pt">Abra o Telegram e busque <strong>@BotFather</strong></span>
-                                            <span class="lang-en hidden">Open Telegram and search for <strong>@BotFather</strong></span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="bg-gray-50 rounded-lg p-4">
-                                    <div class="flex items-start">
-                                        <div class="bg-purple-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 flex-shrink-0">2</div>
-                                        <p class="text-sm text-gray-700">
-                                            <span class="lang-pt">Envie <strong>/newbot</strong></span>
-                                            <span class="lang-en hidden">Send <strong>/newbot</strong></span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="bg-gray-50 rounded-lg p-4">
-                                    <div class="flex items-start">
-                                        <div class="bg-purple-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 flex-shrink-0">3</div>
-                                        <p class="text-sm text-gray-700">
-                                            <span class="lang-pt">Escolha um nome para seu bot<br><span class="text-xs text-gray-500">(ex: "Assistente Dr. Silva")</span></span>
-                                            <span class="lang-en hidden">Choose a name for your bot<br><span class="text-xs text-gray-500">(e.g., "Dr. Silva Assistant")</span></span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="bg-gray-50 rounded-lg p-4">
-                                    <div class="flex items-start">
-                                        <div class="bg-purple-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 flex-shrink-0">4</div>
-                                        <p class="text-sm text-gray-700">
-                                            <span class="lang-pt">Escolha um username<br><span class="text-xs text-gray-500">(ex: @DrSilvaAssistenteBot - deve terminar em "Bot")</span></span>
-                                            <span class="lang-en hidden">Choose a username<br><span class="text-xs text-gray-500">(e.g., @DrSilvaAssistantBot - must end in "Bot")</span></span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="bg-gray-50 rounded-lg p-4">
-                                    <div class="flex items-start">
-                                        <div class="bg-purple-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 flex-shrink-0">5</div>
-                                        <p class="text-sm text-gray-700">
-                                            <span class="lang-pt">O BotFather vai enviar um <strong>token</strong>. Copie a mensagem toda!</span>
-                                            <span class="lang-en hidden">BotFather will send a <strong>token</strong>. Copy the entire message!</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="bg-red-50 border border-red-200 rounded-lg p-4">
-                                    <div class="flex items-start">
-                                        <div class="bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3 flex-shrink-0">6</div>
-                                        <p class="text-sm text-red-800">
-                                            <strong>IMPORTANTE:</strong>
-                                            <span class="lang-pt">Envie <strong>/setprivacy</strong> para @BotFather, selecione seu bot, e escolha <strong>Disable</strong></span>
-                                            <span class="lang-en hidden">Send <strong>/setprivacy</strong> to @BotFather, select your bot, and choose <strong>Disable</strong></span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <h3 class="text-lg font-semibold text-gray-800 mb-4">
-                                <span class="lang-pt">Exemplo de conversa:</span>
-                                <span class="lang-en hidden">Example conversation:</span>
-                            </h3>
-                            <div class="bg-gray-800 text-gray-200 rounded-lg p-4 text-xs font-mono h-96 overflow-y-auto">
-                                <div class="mb-2"><span class="text-blue-400">You:</span> /newbot</div>
-                                <div class="mb-3"><span class="text-green-400">BotFather:</span> Alright, a new bot. How are we going to call it? Please choose a name for your bot.</div>
-                                <div class="mb-2"><span class="text-blue-400">You:</span> Assistente Dr. Silva</div>
-                                <div class="mb-3"><span class="text-green-400">BotFather:</span> Good. Now let's choose a username for your bot. It must end in `bot`. Like this, for example: TetrisBot or tetris_bot.</div>
-                                <div class="mb-2"><span class="text-blue-400">You:</span> DrSilvaAssistenteBot</div>
-                                <div class="mb-3"><span class="text-green-400">BotFather:</span> Done! Congratulations on your new bot. You will find it at t.me/DrSilvaAssistenteBot. You can now add a description, about section and profile picture for your bot, see /help for a list of commands.<br><br>Use this token to access the HTTP API:<br><strong class="text-yellow-300">123456789:ABCdefGHIjklMNOpqrsTUVwxyz</strong><br><br>Keep your token secure and store it safely, it can be used by anyone to control your bot.</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="border-t pt-6 space-y-4">
-                        <!-- BotFather message paste textarea -->
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">
-                                <span class="lang-pt">Cole aqui a mensagem completa que o BotFather enviou:</span>
-                                <span class="lang-en hidden">Paste the complete message from BotFather here:</span>
-                            </label>
-                            <textarea id="botfatherMessage" class="w-full stripe-input font-mono text-sm" rows="8" placeholder="Done! Congratulations on your new bot. You will find it at t.me/DrSilvaAssistenteBot...
-
-Use this token to access the HTTP API:
-123456789:ABCdefGHIjklMNOpqrsTUVwxyz
-
-Keep your token secure..."></textarea>
-                        </div>
-
-                        <!-- Parsed results -->
-                        <div id="parsedResults" class="hidden space-y-2">
-                            <div id="parsedToken" class="parsed-field hidden">
-                                <span class="checkmark">✅</span>
-                                <span class="lang-pt">Token encontrado: </span>
-                                <span class="lang-en hidden">Token found: </span>
-                                <span class="value" id="parsedTokenValue"></span>
-                            </div>
-                            <div id="parsedUsername" class="parsed-field hidden">
-                                <span class="checkmark">✅</span>
-                                <span>Username: </span>
-                                <span class="value" id="parsedUsernameValue"></span>
-                            </div>
-                            <div id="parsedName" class="parsed-field hidden">
-                                <span class="checkmark">✅</span>
-                                <span class="lang-pt">Nome: </span>
-                                <span class="lang-en hidden">Name: </span>
-                                <span class="value" id="parsedNameValue"></span>
-                            </div>
-                        </div>
-
-                        <!-- Manual fallback fields -->
-                        <div id="manualFields" class="hidden space-y-4">
-                            <div class="text-center mb-3">
-                                <button id="showManualFields" class="text-sm text-purple-600 hover:underline">
-                                    <span class="lang-pt">Não conseguiu? Preencha manualmente</span>
-                                    <span class="lang-en hidden">Didn't work? Fill in manually</span>
-                                </button>
-                            </div>
-                            <div id="manualInputs" class="hidden space-y-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                                        <span class="lang-pt">Cole o token do seu bot aqui</span>
-                                        <span class="lang-en hidden">Paste your bot token here</span>
-                                        <span class="text-red-500">*</span>
-                                    </label>
-                                    <input type="text" id="botTokenManual" class="w-full stripe-input font-mono text-sm" placeholder="123456789:ABCdefGHIjklMNOpqrsTUVwxyz">
-                                </div>
-
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                                        <span class="lang-pt">Username do seu bot</span>
-                                        <span class="lang-en hidden">Your bot's username</span>
-                                        <span class="text-red-500">*</span>
-                                    </label>
-                                    <input type="text" id="botUsernameManual" class="w-full stripe-input" placeholder="@DrSilvaAssistenteBot">
-                                </div>
-
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                                        <span class="lang-pt">Nome do seu bot</span>
-                                        <span class="lang-en hidden">Your bot's name</span>
-                                        <span class="text-red-500">*</span>
-                                    </label>
-                                    <input type="text" id="botNameManual" class="w-full stripe-input" placeholder="Assistente Dr. Silva">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Hidden fields to store parsed values -->
-                        <input type="hidden" id="botToken">
-                        <input type="hidden" id="botUsername">
-                        <input type="hidden" id="botName">
-                    </div>
-                </div>
-
-                <div class="flex justify-between mt-8 max-w-3xl mx-auto">
-                    <button class="step-back text-gray-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all">
-                        <span class="lang-pt">← Voltar</span>
-                        <span class="lang-en hidden">← Back</span>
-                    </button>
-                    <button id="step5Next" class="gradient-bg text-white px-12 py-4 rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transition-all">
-                        <span class="lang-pt">Próximo →</span>
-                        <span class="lang-en hidden">Next →</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Step 6: Professional Agreement -->
-            <div id="step6" class="step-content hidden">
+            <!-- Step 4: Professional Agreement -->
+            <div id="step4" class="step-content hidden">
                 <div class="text-center mb-8">
                     <h1 class="text-4xl font-bold text-gray-800 mb-3">
                         <span class="lang-pt">Termos de Serviço</span>
@@ -1167,7 +944,7 @@ Keep your token secure..."></textarea>
                         <span class="lang-pt">← Voltar</span>
                         <span class="lang-en hidden">← Back</span>
                     </button>
-                    <button id="step6Next" class="gradient-bg text-white px-12 py-4 rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                    <button id="step4Next" class="gradient-bg text-white px-12 py-4 rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed" disabled>
                         <span class="lang-pt">Criar Meu Agente! 🚀</span>
                         <span class="lang-en hidden">Create My Agent! 🚀</span>
                     </button>
@@ -1196,8 +973,8 @@ Keep your token secure..."></textarea>
                 </div>
             </div>
 
-            <!-- Step 7: Success -->
-            <div id="step7" class="step-content hidden">
+            <!-- Step 5: Success -->
+            <div id="step5" class="step-content hidden">
                 <div class="text-center mb-8">
                     <div class="text-6xl mb-4">🎉</div>
                     <h1 class="text-5xl font-bold text-gray-800 mb-3">
@@ -1213,8 +990,8 @@ Keep your token secure..."></textarea>
                 <div class="bg-white rounded-xl p-8 card-shadow max-w-2xl mx-auto">
                     <div class="mb-6">
                         <p class="text-lg text-gray-700 mb-4">
-                            <span class="lang-pt">Em poucos minutos, a <strong>BotMother</strong> vai criar um grupo no Telegram com você e seu novo agente.</span>
-                            <span class="lang-en hidden">In a few minutes, <strong>BotMother</strong> will create a Telegram group with you and your new agent.</span>
+                            <span class="lang-pt">Em poucos minutos, a <strong>BotMother</strong> vai entrar em contato com você via <span id="contactChannel">WhatsApp/Telegram</span>.</span>
+                            <span class="lang-en hidden">In a few minutes, <strong>BotMother</strong> will contact you via <span id="contactChannelEn">WhatsApp/Telegram</span>.</span>
                         </p>
                     </div>
 
@@ -1227,15 +1004,15 @@ Keep your token secure..."></textarea>
                             <div class="flex items-start">
                                 <span class="text-green-600 mr-3 text-xl flex-shrink-0">✅</span>
                                 <p class="text-gray-700">
-                                    <span class="lang-pt">BotMother vai te enviar uma mensagem no Telegram</span>
-                                    <span class="lang-en hidden">BotMother will send you a message on Telegram</span>
+                                    <span class="lang-pt">BotMother vai te enviar uma mensagem</span>
+                                    <span class="lang-en hidden">BotMother will send you a message</span>
                                 </p>
                             </div>
                             <div class="flex items-start">
                                 <span class="text-green-600 mr-3 text-xl flex-shrink-0">✅</span>
                                 <p class="text-gray-700">
-                                    <span class="lang-pt">Ela vai criar um grupo com você e seu bot</span>
-                                    <span class="lang-en hidden">She will create a group with you and your bot</span>
+                                    <span class="lang-pt">Ela vai criar seu bot conversacionalmente — sem você precisar mexer no BotFather!</span>
+                                    <span class="lang-en hidden">She will create your bot conversationally — without you touching BotFather!</span>
                                 </p>
                             </div>
                             <div class="flex items-start">
@@ -1255,15 +1032,36 @@ Keep your token secure..."></textarea>
                         </div>
                     </div>
 
-                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+                    <!-- WhatsApp contact info (shown if WhatsApp was selected) -->
+                    <div id="whatsappContact" class="hidden bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
+                        <p class="text-green-800 font-semibold mb-2">
+                            <span class="lang-pt">📱 Fique de olho no WhatsApp!</span>
+                            <span class="lang-en hidden">📱 Keep an eye on WhatsApp!</span>
+                        </p>
+                        <p class="text-green-700 text-sm mb-2">
+                            <span class="lang-pt">BotMother vai te chamar pelo número:</span>
+                            <span class="lang-en hidden">BotMother will contact you at:</span>
+                        </p>
+                        <p class="text-green-700 font-mono font-semibold text-sm mb-3" id="whatsappContactNumber"></p>
+                        <p class="text-green-600 text-xs">
+                            <span class="lang-pt">Ou clique para iniciar a conversa:</span>
+                            <span class="lang-en hidden">Or click to start the conversation:</span>
+                        </p>
+                        <a href="https://wa.me/5511914986115" target="_blank" class="inline-block mt-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-all">
+                            <span class="lang-pt">💬 Abrir WhatsApp</span>
+                            <span class="lang-en hidden">💬 Open WhatsApp</span>
+                        </a>
+                    </div>
+
+                    <!-- Telegram contact info (shown if Telegram was selected) -->
+                    <div id="telegramContact" class="hidden bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
                         <p class="text-blue-800 font-semibold mb-2">
-                            <span class="lang-pt">Enquanto isso, fique de olho no Telegram! 📱</span>
-                            <span class="lang-en hidden">Meanwhile, keep an eye on Telegram! 📱</span>
+                            <span class="lang-pt">📱 Fique de olho no Telegram!</span>
+                            <span class="lang-en hidden">📱 Keep an eye on Telegram!</span>
                         </p>
                         <p class="text-blue-700 text-sm">
-                            <span class="lang-pt">Seu bot:</span>
-                            <span class="lang-en hidden">Your bot:</span>
-                            <a href="#" id="botLink" class="font-mono font-semibold hover:underline">@yourbot</a>
+                            <span class="lang-pt">BotMother vai te chamar em breve.</span>
+                            <span class="lang-en hidden">BotMother will contact you shortly.</span>
                         </p>
                     </div>
 
@@ -1297,11 +1095,11 @@ Keep your token secure..."></textarea>
             registration: '',
             email: '',
             phone: '',
+            whatsapp: '',
             country: '',
+            channelChoice: null,
+            whatsappNumber: '',
             telegramId: '',
-            botToken: '',
-            botUsername: '',
-            botName: '',
             agreementSigned: false,
             timestamp: null
         };
@@ -1310,23 +1108,18 @@ Keep your token secure..."></textarea>
         function loadUrlParameters() {
             const urlParams = new URLSearchParams(window.location.search);
             let hasParams = false;
-            let filledFields = [];
 
-            // Read parameters
             if (urlParams.has('name')) {
                 formData.name = urlParams.get('name');
                 hasParams = true;
-                filledFields.push('name');
             }
             if (urlParams.has('email')) {
                 formData.email = urlParams.get('email');
                 hasParams = true;
-                filledFields.push('email');
             }
             if (urlParams.has('profession')) {
                 const prof = urlParams.get('profession');
                 const professionSelect = document.getElementById('profession');
-                // Try to match to existing options
                 const matchedOption = Array.from(professionSelect.options).find(opt => 
                     opt.value.toLowerCase() === prof.toLowerCase() || 
                     opt.textContent.toLowerCase().includes(prof.toLowerCase())
@@ -1338,17 +1131,18 @@ Keep your token secure..."></textarea>
                     formData.otherProfession = prof;
                 }
                 hasParams = true;
-                filledFields.push('profession');
             }
             if (urlParams.has('phone')) {
                 formData.phone = urlParams.get('phone');
                 hasParams = true;
-                filledFields.push('phone');
+            }
+            if (urlParams.has('whatsapp')) {
+                formData.whatsapp = urlParams.get('whatsapp');
+                hasParams = true;
             }
             if (urlParams.has('telegram')) {
                 formData.telegramId = urlParams.get('telegram');
                 hasParams = true;
-                filledFields.push('telegram');
             }
             if (urlParams.has('lang')) {
                 const lang = urlParams.get('lang');
@@ -1357,15 +1151,12 @@ Keep your token secure..."></textarea>
                 }
             }
 
-            // Show banner if params present
             if (hasParams) {
                 document.getElementById('prefillBanner').classList.remove('hidden');
                 setTimeout(() => {
                     document.getElementById('prefillBanner').classList.add('hidden');
                 }, 5000);
             }
-
-            // Pre-filled fields from URL — user still reviews on step 2 (no auto-advance)
         }
 
         // Load saved progress
@@ -1386,29 +1177,32 @@ Keep your token secure..."></textarea>
         (function handleStripeReturn() {
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('success') === 'true') {
-                // Payment successful — show success screen
-                // Clean URL
                 window.history.replaceState({}, '', window.location.pathname);
-                // Load saved formData for bot link
                 const saved = localStorage.getItem('botnursery_onboarding');
                 if (saved) {
                     try { formData = { ...formData, ...JSON.parse(saved) }; } catch(e) {}
                 }
                 setTimeout(() => {
-                    if (formData.botUsername) {
-                        document.getElementById('botLink').textContent = formData.botUsername;
-                        document.getElementById('botLink').href = `https://t.me/${formData.botUsername.replace('@', '')}`;
+                    // Update success page with channel info
+                    if (formData.channelChoice === 'whatsapp') {
+                        document.getElementById('contactChannel').textContent = 'WhatsApp';
+                        document.getElementById('contactChannelEn').textContent = 'WhatsApp';
+                        document.getElementById('whatsappContact').classList.remove('hidden');
+                        document.getElementById('whatsappContactNumber').textContent = formData.whatsappNumber || formData.whatsapp;
+                    } else {
+                        document.getElementById('contactChannel').textContent = 'Telegram';
+                        document.getElementById('contactChannelEn').textContent = 'Telegram';
+                        document.getElementById('telegramContact').classList.remove('hidden');
                     }
-                    goToStep(7);
+                    goToStep(5);
                     createConfetti();
                     localStorage.removeItem('botnursery_onboarding');
                 }, 100);
                 return;
             }
             if (urlParams.get('canceled') === 'true') {
-                // User canceled Stripe — go back to agreement step
                 window.history.replaceState({}, '', window.location.pathname);
-                setTimeout(() => goToStep(6), 100);
+                setTimeout(() => goToStep(4), 100);
             }
         })();
 
@@ -1425,14 +1219,13 @@ Keep your token secure..."></textarea>
             document.querySelectorAll('.lang-en').forEach(el => {
                 el.classList.toggle('hidden', currentLang !== 'en');
             });
-            // Translate select/dropdown options that have data-pt/data-en attributes
             document.querySelectorAll('option[data-pt][data-en]').forEach(opt => {
                 opt.textContent = currentLang === 'pt' ? opt.getAttribute('data-pt') : opt.getAttribute('data-en');
             });
             document.getElementById('langToggle').innerHTML = currentLang === 'pt' ? '🇬🇧 English' : '🇧🇷 Português';
         }
 
-        // Pricing modal functions
+        // Modal functions
         function openPricingModal() {
             document.getElementById('pricingModal').classList.add('show');
         }
@@ -1441,17 +1234,15 @@ Keep your token secure..."></textarea>
             document.getElementById('pricingModal').classList.remove('show');
         }
 
-        // Close modal on background click
         document.getElementById('pricingModal').addEventListener('click', (e) => {
             if (e.target.id === 'pricingModal') {
                 closePricingModal();
             }
         });
 
-        // Agreement modal functions
         function openAgreementModal() {
             document.getElementById('agreementModal').classList.add('show');
-            updateLanguage(); // ensure modal content matches current lang
+            updateLanguage();
         }
 
         function closeAgreementModal() {
@@ -1466,54 +1257,36 @@ Keep your token secure..."></textarea>
 
         // Navigation
         function goToStep(step) {
-            // Hide all steps
-            for (let i = 1; i <= 7; i++) {
+            for (let i = 1; i <= 5; i++) {
                 document.getElementById(`step${i}`).classList.add('hidden');
             }
             
-            // Show current step
             document.getElementById(`step${step}`).classList.remove('hidden');
             currentStep = step;
             
-            // Map internal steps to display steps (3 is skipped, user sees 1,2,4,5,6 as steps 1-5, 7=done)
-            const displayMap = {1:1, 2:2, 4:3, 5:4, 6:5, 7:6};
-            const displayStep = displayMap[step] || step;
-            const totalSteps = 6;
-            
-            // Update progress bar
-            const progress = (displayStep / totalSteps) * 100;
+            const progress = (step / 5) * 100;
             document.getElementById('progressBar').style.width = `${progress}%`;
             
-            // Update progress text
-            document.querySelector('#progressText .lang-pt').textContent = `Passo ${displayStep} de ${totalSteps}`;
-            document.querySelector('#progressText .lang-en').textContent = `Step ${displayStep} of ${totalSteps}`;
+            document.querySelector('#progressText .lang-pt').textContent = `Passo ${step} de 5`;
+            document.querySelector('#progressText .lang-en').textContent = `Step ${step} of 5`;
             
-            // Block all clicks briefly to prevent click-through on overlapping buttons
             document.body.style.pointerEvents = 'none';
             setTimeout(() => document.body.style.pointerEvents = '', 400);
 
-            // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            
-            // Update checkout summary on step 3
-            if (step === 3) updateCheckoutSummary();
 
-            // Save progress
             saveProgress();
-
-            // No auto-advance — user always reviews pre-filled data
         }
 
         function saveProgress() {
             localStorage.setItem('botnursery_onboarding', JSON.stringify(formData));
         }
 
-        // Back buttons
-        // Back navigation — skip step 3 (old payment, now unused)
-        const backMap = {2:1, 4:2, 5:4, 6:5};
+        // Back navigation
+        const backMap = {2:1, 3:2, 4:3, 5:4};
         document.querySelectorAll('.step-back').forEach(btn => {
             btn.addEventListener('click', () => {
-                const prev = backMap[currentStep] || (currentStep > 1 ? currentStep - 1 : 1);
+                const prev = backMap[currentStep] || 1;
                 goToStep(prev);
             });
         });
@@ -1524,30 +1297,17 @@ Keep your token secure..."></textarea>
                 const plan = e.target.dataset.plan || e.target.closest('.plan-select').dataset.plan;
                 formData.plan = plan;
                 
-                // Organization plan - show contact message
-                if (plan === 'organization') {
-                    const msg = currentLang === 'pt' 
-                        ? 'Para o plano Organization, entre em contato conosco em hello@botnursery.ai ou através do botão "Fale Conosco" no site. Personalizaremos a solução para sua organização.'
-                        : 'For the Organization plan, please contact us at hello@botnursery.ai or via the "Contact Us" button on the site. We will customize the solution for your organization.';
-                    alert(msg);
-                    window.dispatchEvent(new Event('open-chat'));
-                    return;
-                }
-                
-                // Visual feedback
                 document.querySelectorAll('.plan-card').forEach(card => {
                     card.classList.remove('selected');
                 });
                 document.querySelector(`.plan-card[data-plan="${plan}"]`).classList.add('selected');
                 
-                // Enable next button
                 document.getElementById('step1Next').disabled = false;
                 
                 saveProgress();
             });
         });
 
-        // Restore plan selection
         if (formData.plan) {
             document.querySelector(`.plan-card[data-plan="${formData.plan}"]`)?.classList.add('selected');
             document.getElementById('step1Next').disabled = false;
@@ -1560,9 +1320,6 @@ Keep your token secure..."></textarea>
         });
 
         // Step 2: Information form
-        const step2Fields = ['fullName', 'profession', 'email', 'country'];
-        
-        // Restore form values
         if (formData.name) document.getElementById('fullName').value = formData.name;
         if (formData.profession) {
             document.getElementById('profession').value = formData.profession;
@@ -1574,6 +1331,7 @@ Keep your token secure..."></textarea>
         if (formData.registration) document.getElementById('registration').value = formData.registration;
         if (formData.email) document.getElementById('email').value = formData.email;
         if (formData.phone) document.getElementById('phone').value = formData.phone;
+        if (formData.whatsapp) document.getElementById('whatsapp').value = formData.whatsapp;
         if (formData.country) document.getElementById('country').value = formData.country;
 
         document.getElementById('profession').addEventListener('change', (e) => {
@@ -1592,9 +1350,9 @@ Keep your token secure..."></textarea>
             formData.registration = document.getElementById('registration').value.trim();
             formData.email = document.getElementById('email').value.trim();
             formData.phone = document.getElementById('phone').value.trim();
+            formData.whatsapp = document.getElementById('whatsapp').value.trim();
             formData.country = document.getElementById('country').value;
             
-            // Validation
             if (!formData.name || !formData.profession || !formData.email || !formData.country) {
                 alert(currentLang === 'pt' ? 'Por favor, preencha todos os campos obrigatórios.' : 'Please fill in all required fields.');
                 return;
@@ -1606,102 +1364,75 @@ Keep your token secure..."></textarea>
             }
             
             saveProgress();
-            goToStep(4);
+            goToStep(3);
         });
 
-        // Step 3: Payment (now handled at end via Stripe Checkout — step is skipped)
-        // Old card form elements removed — no restore needed
+        // Step 3: Channel selection
+        document.querySelectorAll('.channel-select').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const channel = e.target.dataset.channel || e.target.closest('.channel-select').dataset.channel;
+                formData.channelChoice = channel;
+                
+                document.querySelectorAll('.channel-card').forEach(card => {
+                    card.classList.remove('selected');
+                });
+                document.querySelector(`.channel-card[data-channel="${channel}"]`).classList.add('selected');
+                
+                if (channel === 'whatsapp') {
+                    document.getElementById('whatsappNumberInput').classList.remove('hidden');
+                    document.getElementById('telegramSetup').classList.add('hidden');
+                    // Pre-fill WhatsApp number from step 2 if provided
+                    if (formData.whatsapp) {
+                        document.getElementById('whatsappNumber').value = formData.whatsapp;
+                    }
+                    document.getElementById('step3Next').classList.remove('hidden');
+                } else {
+                    document.getElementById('whatsappNumberInput').classList.add('hidden');
+                    document.getElementById('telegramSetup').classList.remove('hidden');
+                    document.getElementById('step3Next').classList.add('hidden');
+                }
+                
+                saveProgress();
+            });
+        });
 
-        // Update checkout plan summary when reaching step 3
-        function updateCheckoutSummary() {
-            const nameEl = document.getElementById('checkoutPlanName');
-            const priceEl = document.getElementById('checkoutPlanPrice');
-            const isBR = formData.country === 'BR' || currentLang === 'pt';
-            
-            if (formData.plan === 'starter') {
-                nameEl.innerHTML = currentLang === 'pt' ? '🤖 Plano Starter' : '🤖 Starter Plan';
-                priceEl.textContent = isBR ? 'R$249/mês' : '$49/mo';
-            } else if (formData.plan === 'professional') {
-                nameEl.innerHTML = currentLang === 'pt' ? '⭐ Plano Professional' : '⭐ Professional Plan';
-                priceEl.textContent = isBR ? 'R$1.499/mês' : '$299/mo';
+        // Restore channel selection
+        if (formData.channelChoice) {
+            document.querySelector(`.channel-card[data-channel="${formData.channelChoice}"]`)?.classList.add('selected');
+            if (formData.channelChoice === 'whatsapp') {
+                document.getElementById('whatsappNumberInput').classList.remove('hidden');
+                if (formData.whatsappNumber) {
+                    document.getElementById('whatsappNumber').value = formData.whatsappNumber;
+                }
+                document.getElementById('step3Next').classList.remove('hidden');
+            } else {
+                document.getElementById('telegramSetup').classList.remove('hidden');
             }
         }
 
-        document.getElementById('step3Next').addEventListener('click', async () => {
-            const btn = document.getElementById('step3Next');
-            const loading = document.getElementById('checkoutLoading');
-            btn.classList.add('hidden');
-            loading.classList.remove('hidden');
-
-            try {
-                const response = await fetch('https://api.botnursery.ai/create-checkout', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        name: formData.name,
-                        email: formData.email,
-                        profession: formData.profession === 'outro' ? formData.otherProfession : formData.profession,
-                        registration: formData.registration,
-                        phone: formData.phone,
-                        country: formData.country,
-                        plan: formData.plan,
-                        telegramId: formData.telegramId,
-                        botToken: formData.botToken,
-                        botUsername: formData.botUsername,
-                        botName: formData.botName,
-                        lang: currentLang,
-                        agreementVersion: '2026-02-28-v2',
-                        agreementSignedAt: formData.timestamp || new Date().toISOString(),
-                    })
-                });
-
-                const data = await response.json();
-                if (data.url) {
-                    // Save progress before redirecting
-                    saveProgress();
-                    window.location.href = data.url;
-                } else {
-                    throw new Error(data.error || 'Failed to create checkout');
-                }
-            } catch (err) {
-                console.error('Checkout error:', err);
-                alert(currentLang === 'pt'
-                    ? 'Erro ao conectar com o sistema de pagamento. Tente novamente.'
-                    : 'Error connecting to payment system. Please try again.');
-                btn.classList.remove('hidden');
-                loading.classList.add('hidden');
-            }
-        });
-
-        // Step 4: Telegram setup
-        let telegramIdEntered = false;
-
+        // Telegram setup flow
         document.getElementById('hasTelegram').addEventListener('click', () => {
-            document.getElementById('step4a').classList.add('hidden');
-            document.getElementById('step4b').classList.remove('hidden');
-            document.getElementById('step4Next').classList.remove('hidden');
+            document.getElementById('telegramQuestion').classList.add('hidden');
+            document.getElementById('telegramIdInput').classList.remove('hidden');
+            document.getElementById('step3Next').classList.remove('hidden');
         });
 
         document.getElementById('noTelegram').addEventListener('click', () => {
             document.getElementById('telegramDownload').classList.remove('hidden');
-            // Also show the ID input and Next button so user can proceed
-            document.getElementById('step4b').classList.remove('hidden');
-            document.getElementById('step4Next').classList.remove('hidden');
+            document.getElementById('telegramIdInput').classList.remove('hidden');
+            document.getElementById('step3Next').classList.remove('hidden');
         });
 
         document.getElementById('downloadedTelegram').addEventListener('click', () => {
-            document.getElementById('step4a').classList.add('hidden');
+            document.getElementById('telegramQuestion').classList.add('hidden');
             document.getElementById('telegramDownload').classList.add('hidden');
-            document.getElementById('step4b').classList.remove('hidden');
-            document.getElementById('step4Next').classList.remove('hidden');
+            document.getElementById('telegramIdInput').classList.remove('hidden');
         });
 
-        // Restore Telegram ID
         if (formData.telegramId) {
             document.getElementById('telegramId').value = formData.telegramId;
         }
 
-        // Parse @userinfobot response
         document.getElementById('userinfoResponse').addEventListener('input', (e) => {
             const text = e.target.value;
             const idMatch = text.match(/Id:\s*(\d+)/i);
@@ -1714,129 +1445,31 @@ Keep your token secure..."></textarea>
             }
         });
 
-        document.getElementById('step4Next').addEventListener('click', () => {
-            formData.telegramId = document.getElementById('telegramId').value.trim();
-            
-            if (!formData.telegramId || !/^\d+$/.test(formData.telegramId)) {
-                alert(currentLang === 'pt' ? 'Por favor, insira um Telegram ID válido (apenas números).' : 'Please enter a valid Telegram ID (numbers only).');
-                return;
+        document.getElementById('step3Next').addEventListener('click', () => {
+            if (formData.channelChoice === 'whatsapp') {
+                formData.whatsappNumber = document.getElementById('whatsappNumber').value.trim();
+                if (!formData.whatsappNumber) {
+                    alert(currentLang === 'pt' ? 'Por favor, insira seu número do WhatsApp.' : 'Please enter your WhatsApp number.');
+                    return;
+                }
+            } else {
+                formData.telegramId = document.getElementById('telegramId').value.trim();
+                if (!formData.telegramId || !/^\d+$/.test(formData.telegramId)) {
+                    alert(currentLang === 'pt' ? 'Por favor, insira um Telegram ID válido (apenas números).' : 'Please enter a valid Telegram ID (numbers only).');
+                    return;
+                }
             }
             
             saveProgress();
-            goToStep(5);
+            goToStep(4);
         });
 
-        // Step 5: BotFather message auto-parse
-        document.getElementById('botfatherMessage').addEventListener('input', (e) => {
-            const message = e.target.value;
-            
-            // Try to parse token
-            const tokenMatch = message.match(/(\d+:[A-Za-z0-9_-]+)/);
-            
-            // Try to parse username
-            const usernameMatch = message.match(/t\.me\/(\w+Bot)|@(\w+Bot)/i);
-            
-            // Try to parse bot name from username (remove trailing "Bot" and split camelCase)
-            let botName = '';
-            if (usernameMatch) {
-                const rawUsername = usernameMatch[1] || usernameMatch[2];
-                // Remove trailing "Bot" and split camelCase/underscores into words
-                botName = rawUsername
-                    .replace(/Bot$/i, '')
-                    .replace(/_/g, ' ')
-                    .replace(/([a-z])([A-Z])/g, '$1 $2')
-                    .trim();
-            }
-            
-            // Show parsed results
-            const parsedResults = document.getElementById('parsedResults');
-            const manualFields = document.getElementById('manualFields');
-            
-            if (tokenMatch || usernameMatch) {
-                parsedResults.classList.remove('hidden');
-                
-                if (tokenMatch) {
-                    const token = tokenMatch[1];
-                    document.getElementById('parsedToken').classList.remove('hidden');
-                    document.getElementById('parsedTokenValue').textContent = token.substring(0, 20) + '...';
-                    document.getElementById('botToken').value = token;
-                }
-                
-                if (usernameMatch) {
-                    const username = usernameMatch[1] || usernameMatch[2];
-                    document.getElementById('parsedUsername').classList.remove('hidden');
-                    document.getElementById('parsedUsernameValue').textContent = '@' + username;
-                    document.getElementById('botUsername').value = '@' + username;
-                }
-                
-                if (botName) {
-                    document.getElementById('parsedName').classList.remove('hidden');
-                    document.getElementById('parsedNameValue').textContent = botName;
-                    document.getElementById('botName').value = botName;
-                }
-                
-                // Hide manual fields if parsing succeeded
-                manualFields.classList.add('hidden');
-            } else if (message.length > 50) {
-                // Parsing failed, show manual option
-                parsedResults.classList.add('hidden');
-                manualFields.classList.remove('hidden');
-            }
-        });
-
-        // Manual fields toggle
-        document.getElementById('showManualFields')?.addEventListener('click', () => {
-            document.getElementById('manualInputs').classList.toggle('hidden');
-        });
-
-        // Restore bot values
-        if (formData.botToken) {
-            document.getElementById('botToken').value = formData.botToken;
-            // Could also populate the textarea with a reconstructed message, but not essential
-        }
-        if (formData.botUsername) document.getElementById('botUsername').value = formData.botUsername;
-        if (formData.botName) document.getElementById('botName').value = formData.botName;
-
-        document.getElementById('step5Next').addEventListener('click', () => {
-            // Get values from either parsed hidden fields or manual inputs
-            let token = document.getElementById('botToken').value.trim();
-            let username = document.getElementById('botUsername').value.trim();
-            let name = document.getElementById('botName').value.trim();
-            
-            // Fallback to manual inputs if hidden fields empty
-            if (!token) token = document.getElementById('botTokenManual')?.value.trim() || '';
-            if (!username) username = document.getElementById('botUsernameManual')?.value.trim() || '';
-            if (!name) name = document.getElementById('botNameManual')?.value.trim() || '';
-            
-            formData.botToken = token;
-            formData.botUsername = username;
-            formData.botName = name;
-            
-            // Validation
-            if (!formData.botToken || !formData.botUsername || !formData.botName) {
-                alert(currentLang === 'pt' ? 'Por favor, preencha todos os campos do bot ou cole a mensagem completa do BotFather.' : 'Please fill in all bot fields or paste the complete BotFather message.');
-                return;
-            }
-            
-            if (!formData.botToken.match(/^\d+:[A-Za-z0-9_-]+$/)) {
-                alert(currentLang === 'pt' ? 'Token inválido. Formato esperado: números:letras' : 'Invalid token. Expected format: numbers:letters');
-                return;
-            }
-            
-            if (!formData.botUsername.startsWith('@')) {
-                formData.botUsername = '@' + formData.botUsername;
-            }
-            
-            saveProgress();
-            goToStep(6);
-        });
-
-        // Step 6: Agreement
+        // Step 4: Agreement
         document.getElementById('agreementCheck').addEventListener('change', (e) => {
-            document.getElementById('step6Next').disabled = !e.target.checked;
+            document.getElementById('step4Next').disabled = !e.target.checked;
         });
 
-        document.getElementById('step6Next').addEventListener('click', async () => {
+        document.getElementById('step4Next').addEventListener('click', async () => {
             if (!document.getElementById('agreementCheck').checked) {
                 return;
             }
@@ -1844,15 +1477,12 @@ Keep your token secure..."></textarea>
             formData.agreementSigned = true;
             formData.timestamp = new Date().toISOString();
             
-            // Show loading
-            document.getElementById('step6Next').classList.add('hidden');
+            document.getElementById('step4Next').classList.add('hidden');
             document.getElementById('loadingState').classList.remove('hidden');
             
             try {
-                // Capture agreement text for versioning
                 const agreementText = document.getElementById('agreementFullText')?.innerText || '';
 
-                // Step 1: Save onboard data
                 await fetch(API_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -1862,14 +1492,14 @@ Keep your token secure..."></textarea>
                         registration: formData.registration,
                         email: formData.email,
                         phone: formData.phone,
+                        whatsapp: formData.whatsapp,
                         country: formData.country,
                         plan: formData.plan,
+                        channelChoice: formData.channelChoice,
+                        whatsappNumber: formData.whatsappNumber,
                         telegramId: formData.telegramId,
-                        botToken: formData.botToken,
-                        botUsername: formData.botUsername,
-                        botName: formData.botName,
                         agreementSigned: true,
-                        agreementVersion: '2026-02-28-v2',
+                        agreementVersion: '2026-03-01-v2',
                         agreementText: agreementText,
                         agreementSignedAt: formData.timestamp,
                         agreementLanguage: currentLang,
@@ -1877,7 +1507,6 @@ Keep your token secure..."></textarea>
                     })
                 });
 
-                // Step 2: Create Stripe Checkout session and redirect
                 const checkoutResponse = await fetch('https://api.botnursery.ai/create-checkout', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -1887,14 +1516,14 @@ Keep your token secure..."></textarea>
                         profession: formData.profession === 'outro' ? formData.otherProfession : formData.profession,
                         registration: formData.registration,
                         phone: formData.phone,
+                        whatsapp: formData.whatsapp,
                         country: formData.country,
                         plan: formData.plan,
+                        channelChoice: formData.channelChoice,
+                        whatsappNumber: formData.whatsappNumber,
                         telegramId: formData.telegramId,
-                        botToken: formData.botToken,
-                        botUsername: formData.botUsername,
-                        botName: formData.botName,
                         lang: currentLang,
-                        agreementVersion: '2026-02-28-v2',
+                        agreementVersion: '2026-03-01-v2',
                         agreementSignedAt: formData.timestamp,
                     })
                 });
@@ -1910,20 +1539,19 @@ Keep your token secure..."></textarea>
             } catch (error) {
                 console.error('Submission error:', error);
                 
-                // Show error
                 document.getElementById('loadingState').classList.add('hidden');
                 document.getElementById('errorState').classList.remove('hidden');
                 document.getElementById('errorMessage').textContent = currentLang === 'pt' 
                     ? 'Erro ao conectar com o sistema de pagamento. Por favor, tente novamente.'
                     : 'Error connecting to payment system. Please try again.';
                 
-                document.getElementById('step6Next').classList.remove('hidden');
+                document.getElementById('step4Next').classList.remove('hidden');
             }
         });
 
         document.getElementById('retryButton')?.addEventListener('click', () => {
             document.getElementById('errorState').classList.add('hidden');
-            document.getElementById('step6Next').classList.remove('hidden');
+            document.getElementById('step4Next').classList.remove('hidden');
         });
 
         // Confetti animation
@@ -1942,26 +1570,6 @@ Keep your token secure..."></textarea>
                     setTimeout(() => confetti.remove(), 5000);
                 }, i * 50);
             }
-        }
-
-        /**
-         * Generate onboarding URL with pre-filled data
-         * This function is called by the sales bot to create redirect links
-         * @param {Object} data - {name, email, profession, phone, telegram}
-         * @returns {string} Full onboarding URL with query parameters
-         */
-        function generateOnboardingUrl(data) {
-            const baseUrl = window.location.origin + window.location.pathname;
-            const params = new URLSearchParams();
-            
-            if (data.name) params.set('name', data.name);
-            if (data.email) params.set('email', data.email);
-            if (data.profession) params.set('profession', data.profession);
-            if (data.phone) params.set('phone', data.phone);
-            if (data.telegram) params.set('telegram', data.telegram);
-            if (data.lang) params.set('lang', data.lang);
-            
-            return `${baseUrl}?${params.toString()}`;
         }
 
         // Initialize
